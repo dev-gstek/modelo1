@@ -1,12 +1,21 @@
 /* --- CSS Reset & Custom Properties V2 --- */
 :root {
-    --sage: #A3C9A8;
-    --sage-dark: #84A98C;
-    --blush: #F5CAC3;
-    --sand: #F7EDE2;
-    --cream: #FAF9F6;
-    --dark: #2C3E50;
-    --gray: #8D99AE;
+    /* New Pediatric Pastel Palette */
+    --pink: #F7A1B8;
+    --pink-light: #fbe6eb;
+    --yellow: #fae29c;
+    --green: #c3e3be;
+    --blue: #a9d4e5;
+    --purple: #bba8d4;
+    --cream: #fffcf9;
+    --dark: #5e4d46;
+    --gray: #a69c99;
+    
+    /* Fallbacks/Mappings for existing vars */
+    --sage: var(--green);
+    --sage-dark: #8ba986;
+    --blush: var(--pink);
+    --sand: var(--yellow);
     
     --font-display: 'Outfit', sans-serif;
     --font-text: 'Inter', sans-serif;
@@ -15,7 +24,7 @@
     --radius-bento: 32px;
     
     --shadow-soft: 0 10px 40px rgba(0,0,0,0.03);
-    --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.07);
+    --shadow-glass: 0 8px 32px rgba(94, 77, 70, 0.07);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -131,18 +140,20 @@ img { max-width: 100%; display: block; }
 .nav-links a:hover { color: var(--dark); }
 
 .btn-pill {
-    background: var(--sage);
-    color: var(--dark);
+    background: var(--pink);
+    color: white;
     padding: 12px 24px;
     border-radius: var(--radius-pill);
     font-family: var(--font-display);
     font-weight: 600;
-    transition: 0.3s;
+    transition: var(--transition);
 }
 
 .btn-pill:hover {
-    background: var(--sage-dark);
-    color: white;
+    background: var(--pink-light);
+    color: var(--dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glass);
 }
 
 /* --- Modern Hero --- */
