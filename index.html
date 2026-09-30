@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briefing: Sistema de Gestão Multicanal</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --bg-page: #f3f4f6;
+            --bg-card: #ffffff;
+            --bg-question: #f9fafb;
+            --border: #d1d5db;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            color: #111827;
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .header-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"], input[type="date"] {
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        
+        input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            min-height: 120px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            background-color: white;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            color: var(--primary);
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .question {
+            margin-bottom: 1.5rem;
+            background: var(--bg-question);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .question p {
+            margin-top: 0;
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hint {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: block;
+            font-style: italic;
+        }
+
+        .actions {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+        
+        button.secondary {
+            background-color: white;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+        
+        button.secondary:hover {
+            background-color: var(--bg-page);
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; padding: 0; max-width: 100%; }
+            .actions { display: none; }
+            .question { break-inside: avoid; border: none; padding: 0 0 1rem 0; background: transparent; }
+            textarea { border: 1px solid #e5e7eb; min-height: 80px; }
+            h2 { page-break-after: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Briefing do Projeto</h1>
+        <div class="subtitle">Plataforma de Gestão Multicanal</div>
+
+        <div class="header-info">
+            <div class="form-group">
+                <label for="cliente">Nome da Empresa / Cliente:</label>
+                <input type="text" id="cliente" placeholder="Ex: Dom Lux Brindes">
+            </div>
+            <div class="form-group">
+                <label for="data">Data da Reunião:</label>
+                <input type="date" id="data">
+            </div>
+        </div>
+
+        <!-- Seção 1 -->
+        <h2>📦 1. Volume e Operação Básica</h2>
+        
+        <div class="question">
+            <p>1.1. Qual é a média de pedidos mensais somando todos os canais de venda?</p>
+            <textarea placeholder="Anotações sobre volume mensal..."></textarea>
+        </div>
+
+        <div class="question">
+            <p>1.2. Quantos SKUs (produtos únicos) vocês têm cadastrados hoje?</p>
+            <span class="hint">Considerando as variações (tamanho, cor, etc.)</span>
+            <textarea placeholder="Anotações sobre SKUs e variações..."></textarea>
+        </div>
+
+        <div class="question">
+            <p>1.3. Vocês já utilizam algum sistema de gestão (ERP como Bling, Tiny) ou controlam tudo em planilhas?</p>
+            <textarea placeholder="Anotações sobre ERP atual..."></textarea>
+        </div>
+
+        <div class="question">
+            <p>1.4. Como é feita a emissão de notas fiscais (NF-e / NFC-e) hoje?</p>
+            <span class="hint">O novo sistema precisará emitir as notas diretamente ou vai integrar com um ERP existente?</span>
+            <textarea placeholder="Anotações sobre fiscal e emissão..."></textarea>
+        </div>
+
+        <!-- Seção 2 -->
+        <h2>🔄 2. Integrações e Canais de Venda</h2>
+
+        <div class="question">
+            <p>2.1. Mercado Livre, Shopee e Nuvemshop: Possuem apenas uma conta em cada?</p>
+            <span class="hint">Ou gerenciam múltiplas contas/CNPJs nas plataformas?</span>
+            <textarea placeholder="Anotações sobre contas nos marketplaces..."></textarea>
+        </div>
+
+        <div class="question">
+            <p>2.2. WhatsApp e Instagram: Como esperam integrar?</p>
+            <span class="hint">A ideia é apenas registrar essas vendas manualmente no sistema, ou esperam automação (ex: bot que cria pedido)?</span>
+            <textarea placeholder="Anotações sobre vendas sociais..."></textarea>
+        </div>
+
+        <div class="question">
+            <p>2.3. Quais empresas/métodos de frete e logística vocês utilizam?</p>
+            <span class="hint">Ex: Correios, Melhor Envio, transportadoras próprias, Kangu, Mercado Envios...</span>
+            <textarea placeholder="Anotações sobre logística..."></textarea>
+        </div>
+
+        <!-- Seção 3 -->
+        <h2>🎨 3. Produtos Personalizados (Ponto Crítico)</h2>
+
+        <div class="question">
+            <p>3.1. Qual a proporção das vendas entre produtos personalizados vs. prateleira (não personalizados)?</p>
+            <textarea placeholder="Anotações sobre proporção de vendas..."></textarea>
+        </div>
+
+        <div class="question">
+            <p>3.2. Como funciona o fluxo do personalizado?</p>
+            <span class="hint">Ex: Pedido > Envio da Arte > Aprovação > Produção > Despacho. O sistema precisará gerenciar os status dessa esteira de produção?</span>
+            <textarea placeholder="Anotações sobre a esteira de produção..."></textarea>
+        </div>
+
+        <div class="question">
+            <p>3.3. Como é feita a captura da personalização?</p>
+            <span class="hint">O cliente faz no ato da compra (via site) ou vocês combinam os detalhes pelo WhatsApp após o pagamento?</span>
+            <textarea placeholder="Anotações sobre coleta de dados de personalização..."></textarea>
+        </div>
+
+        <div class="question">
+            <p>3.4. O sistema precisará armazenar e gerenciar os arquivos de arte/design vinculados a cada pedido?</p>
+            <textarea placeholder="Anotações sobre gestão de arquivos..."></textarea>
+        </div>
+
+        <!-- Seção 4 -->
+        <h2>💰 4. Financeiro e Precificação</h2>
+
+        <div class="question">
+            <p>4.1. Como vocês calculam o custo do produto hoje?</p>
+            <span class="hint">O sistema precisará de uma ficha técnica (composição de insumos) para os personalizados?</span>
+            <textarea placeholder="Anotações sobre custo e ficha técnica..."></textarea>
+        </div>
+
+        <div class="question">
+            <p>4.2. Precisa de conciliação automática dos repasses dos marketplaces?</p>
+            <span class="hint">Descontando taxas de comissão da plataforma, taxas fixas e frete retido.</span>
+            <textarea placeholder="Anotações sobre repasses..."></textarea>
+        </div>
+
+        <div class="question">
+            <p>4.3. O controle de Contas a Pagar/Receber envolverá conciliação bancária?</p>
+            <span class="hint">Ex: importar arquivo OFX do banco mensalmente ou API.</span>
+            <textarea placeholder="Anotações sobre conciliação bancária..."></textarea>
+        </div>
+
+        <div class="question">
+            <p>4.4. Sobre a Margem de Contribuição: quais custos variáveis querem ratear?</p>
+            <span class="hint">Além de taxas e impostos, querem incluir embalagem, custo de tráfego/ads por pedido?</span>
+            <textarea placeholder="Anotações sobre formação de margem..."></textarea>
+        </div>
+
+        <!-- Seção 5 -->
+        <h2>🏗️ 5. Estoque e Logística</h2>
+
+        <div class="question">
+            <p>5.1. Como é feita a baixa de estoque dos personalizados?</p>
+            <span class="hint">O estoque é da matéria-prima (ex: caneca branca em branco) ou do produto final?</span>
+            <textarea placeholder="Anotações sobre baixa de estoque..."></textarea>
+        </div>
+
+        <div class="question">
+            <p>5.2. Vocês trabalham com múltiplos locais de estoque?</p>
+            <span class="hint">Ex: estoque físico local vs. Fulfillment do Mercado Livre/Shopee.</span>
+            <textarea placeholder="Anotações sobre múltiplos estoques..."></textarea>
+        </div>
+
+        <!-- Botões -->
+        <div class="actions">
+            <button onclick="window.print()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                Imprimir / Salvar em PDF
+            </button>
+            <button class="secondary" onclick="limparTudo()">
+                Limpar Campos
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Elementos do formulário
+        const dataInput = document.getElementById('data');
+        const clienteInput = document.getElementById('cliente');
+        const textareas = document.querySelectorAll('textarea');
+
+        // 1. Carregar dados salvos ao abrir a página
+        window.onload = () => {
+            // Se não tiver data salva, bota a de hoje
+            if (!localStorage.getItem('briefing_data')) {
+                dataInput.valueAsDate = new Date();
+            } else {
+                dataInput.value = localStorage.getItem('briefing_data');
+            }
+            
+            clienteInput.value = localStorage.getItem('briefing_cliente') || '';
+            
+            textareas.forEach((t, index) => {
+                t.value = localStorage.getItem(`briefing_q${index}`) || '';
+            });
+        };
+
+        // 2. Salvar automaticamente no navegador sempre que você digitar algo
+        clienteInput.addEventListener('input', (e) => localStorage.setItem('briefing_cliente', e.target.value));
+        dataInput.addEventListener('input', (e) => localStorage.setItem('briefing_data', e.target.value));
+        
+        textareas.forEach((t, index) => {
+            t.addEventListener('input', (e) => {
+                localStorage.setItem(`briefing_q${index}`, e.target.value);
+            });
+        });
+
+        // 3. Limpar tudo
+        function limparTudo() {
+            if(confirm('Tem certeza que deseja limpar todas as respostas? Isso apagará os dados salvos e não tem volta.')) {
+                // Limpa o cache do navegador para esse site
+                localStorage.clear();
+                
+                // Limpa os campos visuais
+                textareas.forEach(t => t.value = '');
+                clienteInput.value = '';
+                dataInput.valueAsDate = new Date();
+            }
+        }
+    </script>
+</body>
+</html>
