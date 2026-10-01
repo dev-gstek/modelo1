@@ -326,7 +326,7 @@
                     <h3>Módulo 1: Motor de Captação de Pedidos (Automação)</h3>
                     <ul>
                         <li><strong>Integração API (Automática):</strong> Robôs de sincronização que puxam
-                            automaticamente todos os pedidos do Mercado Livre, Shopee, Amazon e NuvemShop em tempo real
+                            automaticamente todos os pedidos do Mercado Livre, Shopee e NuvemShop em tempo real
                             (ou periodicamente).</li>
                         <li><strong>Lançamento Manual Rápido:</strong> Uma tela otimizada para registro de vendas
                             sociais (WhatsApp e Instagram).</li>
@@ -356,7 +356,7 @@
                     <p>O coração operacional logístico para evitar vendas sem estoque.</p>
                     <ul>
                         <li><strong>Baixa Automática:</strong> Comunicação bidirecional com as plataformas. Ao vender um item em qualquer canal, o sistema dá baixa localmente.</li>
-                        <li><strong>Sincronização em Rede:</strong> O saldo atualizado é refletido imediatamente no Mercado Livre, Shopee, NuvemShop e Amazon para evitar furos de estoque.</li>
+                        <li><strong>Sincronização em Rede:</strong> O saldo atualizado é refletido imediatamente no Mercado Livre, Shopee e NuvemShop para evitar furos de estoque.</li>
                     </ul>
                 </div>
 
@@ -369,7 +369,7 @@
                             Data, Cliente, Nº Pedido, Produto, Custo, Valor Venda, Imposto, Caixa, Lucro, % de Lucro,
                             Margem de Contribuição.</li>
                         <li><strong>Dashboard Unificado:</strong> Um painel onde ao selecionar "Mês de Outubro", o
-                            sistema consolida o lucro real somando Mercado Livre + Shopee + NuvemShop + Amazon +
+                            sistema consolida o lucro real somando Mercado Livre + Shopee + NuvemShop +
                             WhatsApp.</li>
                     </ul>
                 </div>
@@ -470,21 +470,7 @@
                         </ul>
                     </div>
 
-                    <!-- Amazon -->
-                    <div style="border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                            <h3 style="color: #111827;">4. Amazon SP-API</h3>
-                            <span class="status yellow">🟡 Complexa</span>
-                        </div>
-                        <ul style="font-size: 0.95rem; margin-bottom: 0;">
-                            <li><strong>Autenticação:</strong> AWS IAM + OAuth. Muito rigoroso.</li>
-                            <li><strong>Pedidos e Taxas:</strong> Sim (Orders API e Finances API).</li>
-                        </ul>
-                        <div class="alert">
-                            <strong>⚠️ PII:</strong> A Amazon oculta dados do cliente após a entrega. Sistema deve
-                            salvar imediatamente.
-                        </div>
-                    </div>
+
                 </div>
 
                 <div class="highlight-box">
