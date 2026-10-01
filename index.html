@@ -1,384 +1,571 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Briefing: Sistema de Gestão Multicanal</title>
+    <title>Proposta Comercial - Dom Lux Brindes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --text-main: #1f2937;
-            --text-muted: #6b7280;
-            --bg-page: #f3f4f6;
-            --bg-card: #ffffff;
-            --bg-question: #f9fafb;
-            --border: #d1d5db;
+            --primary: #4F46E5;
+            --primary-dark: #4338CA;
+            --secondary: #10B981;
+            --secondary-dark: #059669;
+            --bg: #F9FAFB;
+            --surface: #FFFFFF;
+            --text-main: #111827;
+            --text-light: #4B5563;
+            --border: #E5E7EB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-page);
+            background-color: var(--bg);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 2rem;
-            margin: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1E1B4B 0%, #4F46E5 100%);
+            color: white;
+            padding: 5rem 2rem 6rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--bg-card);
-            padding: 3rem;
+            max-width: 1000px;
+            margin: -4rem auto 4rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card {
+            background: var(--surface);
             border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        h1 {
-            color: #111827;
-            font-size: 2rem;
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: var(--text-muted);
+            padding: 2.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
             margin-bottom: 2rem;
+            border: 1px solid var(--border);
         }
 
-        .header-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid #e5e7eb;
-        }
-
-        .form-group {
+        .header-tags {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
         }
 
-        label {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        .tag-group p {
+            margin-bottom: 0.25rem;
             font-size: 0.95rem;
         }
 
-        input[type="text"], input[type="date"] {
-            padding: 0.75rem;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: border-color 0.2s;
-        }
-        
-        input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        .tag-group strong {
+            color: var(--primary-dark);
         }
 
-        textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            min-height: 120px;
-            box-sizing: border-box;
-            font-family: inherit;
-            font-size: 1rem;
-            resize: vertical;
-            background-color: white;
-        }
-
-        h2 {
-            font-size: 1.35rem;
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
             color: var(--primary);
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #e5e7eb;
+            margin-bottom: 1.25rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
 
-        .question {
+        .text-content p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .text-content ul {
+            margin-left: 1.5rem;
             margin-bottom: 1.5rem;
-            background: var(--bg-question);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
+            color: var(--text-light);
         }
 
-        .question p {
-            margin-top: 0;
-            font-weight: 600;
-            font-size: 1.05rem;
+        .text-content li {
             margin-bottom: 0.5rem;
         }
 
-        .hint {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+        .module-box {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .module-box h3 {
+            color: #111827;
+            font-size: 1.2rem;
             margin-bottom: 1rem;
-            display: block;
-            font-style: italic;
+        }
+
+        .highlight-box {
+            background: #EEF2FF;
+            border: 1px solid #C7D2FE;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status.green {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .status.yellow {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        .alert {
+            background: #FEF2F2;
+            color: #991B1B;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
         }
 
         .actions {
-            margin-top: 3rem;
             display: flex;
-            gap: 1rem;
             justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
         }
 
-        button {
-            padding: 1rem 2rem;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 6px;
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.2s;
+            border: none;
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        button:hover {
-            background-color: var(--primary-hover);
-        }
-        
-        button.secondary {
-            background-color: white;
-            color: var(--text-main);
-            border: 1px solid var(--border);
-        }
-        
-        button.secondary:hover {
-            background-color: var(--bg-page);
+        .btn-approve {
+            background-color: var(--secondary);
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
         }
 
-        @media print {
-            body { background: white; padding: 0; }
-            .container { box-shadow: none; padding: 0; max-width: 100%; }
-            .actions { display: none; }
-            .question { break-inside: avoid; border: none; padding: 0 0 1rem 0; background: transparent; }
-            textarea { border: 1px solid #e5e7eb; min-height: 80px; }
-            h2 { page-break-after: avoid; }
+        .btn-approve:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-review {
+            background-color: white;
+            color: #EF4444;
+            border: 1px solid #EF4444;
+        }
+
+        .btn-review:hover {
+            background-color: #FEF2F2;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 400px;
+            animation: slideUp 0.3s ease-out;
+            margin: 0 1rem;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .badge-approved {
+            display: none;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 99px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 1.5rem auto 0;
+            width: fit-content;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.4);
+            animation: slideUp 0.5s ease-out;
         }
     </style>
 </head>
+
 <body>
 
+    <header class="header">
+        <h1>Proposta de Desenvolvimento</h1>
+        <p>Plataforma de Gestão Unificada e Motor Financeiro</p>
+        <div id="badgeApproved" class="badge-approved">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+            </svg>
+            PROPOSTA APROVADA
+        </div>
+    </header>
+
     <div class="container">
-        <h1>Briefing do Projeto</h1>
-        <div class="subtitle" style="margin-bottom: 1.5rem;">Plataforma de Gestão Multicanal</div>
 
-        <!-- Perfil GSTek para Autoridade -->
-        <div class="company-profile" style="background: #eef2ff; border-left: 4px solid var(--primary); padding: 1.5rem; border-radius: 0 8px 8px 0; margin-bottom: 2.5rem;">
-            <h3 style="margin-top: 0; color: var(--primary); font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                GSTek - Engenharia de Software Corporativo
-            </h3>
-            <p style="margin-bottom: 1rem; font-size: 0.95rem; color: #374151;">
-                Especialistas em transformar processos manuais e requisitos complexos em ecossistemas digitais de alta performance. 
-                Foco em <strong>Arquitetura Escalável</strong>, <strong>Automação</strong> e <strong>Segurança</strong>.
-            </p>
-            <div style="display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--text-muted); flex-wrap: wrap;">
-                <span style="display: flex; align-items: center; gap: 0.3rem;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> (62) 98205-3988</span>
-                <span style="display: flex; align-items: center; gap: 0.3rem;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> joao.matos@gstek.com.br</span>
-                <span style="display: flex; align-items: center; gap: 0.3rem;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> Stack: Python, Django, PostgreSQL, Celery, Docker</span>
+        <!-- Apresentação & Problema -->
+        <div class="card">
+            <div class="header-tags">
+                <div class="tag-group">
+                    <p><strong>Cliente:</strong> Dom Lux Brindes</p>
+                    <p><strong>Consultoria:</strong> GSTek - Engenharia de Software Corporativo</p>
+                </div>
+                <div class="tag-group" style="text-align: right;">
+                    <p><strong>Stack Tecnológico:</strong> Python, Django, PostgreSQL, Celery, Docker</p>
+                </div>
+            </div>
+
+            <div class="text-content">
+                <h2 class="section-title">1. O Problema Atual (A Dor)</h2>
+                <p>Hoje, a Dom Lux perde tempo precioso exportando relatórios mensais separados do Mercado Livre e da
+                    Shopee para consolidar tudo manualmente em planilhas. Para cada venda, ela precisa cruzar
+                    manualmente os dados para chegar nos 12 indicadores-chave (Custo, Venda, Impostos, Caixa, Lucro e
+                    Margem de Contribuição) de seus cerca de 500 SKUs.</p>
+
+                <h2 class="section-title" style="margin-top: 2rem;">2. A Solução Proposta (O Fim das Planilhas)</h2>
+                <p>Desenvolver uma Plataforma de Gestão Multicanal sob medida. O sistema vai substituir as planilhas
+                    fragmentadas, conectando-se diretamente às plataformas de venda para automatizar a captura de dados
+                    e o cálculo financeiro de cada centavo que entra e sai.</p>
+                <p>A plataforma será construída baseada nos seguintes módulos:</p>
             </div>
         </div>
 
-        <div class="header-info">
-            <div class="form-group">
-                <label for="cliente">Nome da Empresa / Cliente:</label>
-                <input type="text" id="cliente" placeholder="Ex: Dom Lux Brindes">
+        <!-- Módulos da Solução -->
+        <div class="card">
+            <div class="text-content">
+                <div class="module-box">
+                    <h3>Módulo 1: Motor de Captação de Pedidos (Automação)</h3>
+                    <ul>
+                        <li><strong>Integração API (Automática):</strong> Robôs de sincronização que puxam
+                            automaticamente todos os pedidos do Mercado Livre, Shopee, Amazon e NuvemShop em tempo real
+                            (ou periodicamente).</li>
+                        <li><strong>Lançamento Manual Rápido:</strong> Uma tela otimizada para registro de vendas
+                            sociais (WhatsApp e Instagram).</li>
+                        <li><strong>Aposentadoria de Relatórios:</strong> A cliente não precisará mais exportar
+                            relatórios nas plataformas; o sistema fará a varredura e importação contínua de todos os
+                            dados do pedido.</li>
+                    </ul>
+                </div>
+
+                <div class="module-box">
+                    <h3>Módulo 2: Gestão Inteligente de Custos (Base do Lucro)</h3>
+                    <p>Para que o sistema calcule a margem sozinho, ele precisa conhecer os custos.</p>
+                    <ul>
+                        <li><strong>Cadastro Unificado de Produtos (500 SKUs):</strong> Base central da inteligência.
+                        </li>
+                        <li><strong>Matriz de Custos:</strong> Cada produto terá campos para Custo Base e Custo de
+                            Embalagem.</li>
+                        <li><strong>Matriz de Impostos:</strong> Configuração de Imposto Individual (%), garantindo que
+                            o cálculo bata com a realidade contábil.</li>
+                        <li><strong>Regras das Plataformas:</strong> O sistema vai considerar as taxas e comissões que
+                            os marketplaces retêm na fonte.</li>
+                    </ul>
+                </div>
+
+                <div class="module-box">
+                    <h3>Módulo 3: Inteligência Financeira e Painel de Lucro (O Coração)</h3>
+                    <p>O sistema replicará a lógica que já é utilizada, porém de forma automatizada, instantânea e
+                        unificada.</p>
+                    <ul>
+                        <li><strong>Geração Automática de DRE por Pedido:</strong> O sistema exibirá as colunas: ID,
+                            Data, Cliente, Nº Pedido, Produto, Custo, Valor Venda, Imposto, Caixa, Lucro, % de Lucro,
+                            Margem de Contribuição.</li>
+                        <li><strong>Dashboard Unificado:</strong> Um painel onde ao selecionar "Mês de Outubro", o
+                            sistema consolida o lucro real somando Mercado Livre + Shopee + NuvemShop + Amazon +
+                            WhatsApp.</li>
+                    </ul>
+                </div>
+
+                <div class="module-box" style="margin-bottom: 0;">
+                    <h3>Módulo 4: Controle de Acesso e Usuários</h3>
+                    <ul>
+                        <li><strong>Sistema de Permissões:</strong> Separação de acesso para os 4 usuários iniciais.
+                        </li>
+                        <li><strong>Exemplo:</strong> Um usuário de "Operação" pode lançar vendas do WhatsApp, mas não
+                            pode ver a coluna "% de Lucro", que fica restrita aos administradores.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="data">Data da Reunião:</label>
-                <input type="date" id="data">
+        </div>
+
+        <!-- Escopo Opcional e Próximos Passos -->
+        <div class="grid-2">
+            <div class="card" style="margin-bottom: 0;">
+                <h2 class="section-title">3. Escopo Opcional (Futuro)</h2>
+                <div class="text-content">
+                    <p>Oportunidades de evolução para a plataforma (orçamento separado):</p>
+                    <ul>
+                        <li><strong>Conciliação Bancária via OFX/API:</strong> Importar o extrato do banco e cruzar com
+                            os repasses previstos.</li>
+                        <li><strong>Gestão de Estoque Unificado:</strong> Trazer o controle de estoque de terceiros para
+                            dentro do sistema GSTek (baixa automática).</li>
+                        <li><strong>Esteira de Produção:</strong> Módulo "Kanban" para gerenciar os itens
+                            personalizados, anexando artes aprovadas.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" style="margin-bottom: 0;">
+                <h2 class="section-title">4. Próximos Passos</h2>
+                <div class="text-content">
+                    <ol style="margin-left: 1.5rem; color: var(--text-light);">
+                        <li style="margin-bottom: 0.5rem;">Aprovação desta arquitetura inicial e da abordagem focada no
+                            motor financeiro.</li>
+                        <li style="margin-bottom: 0.5rem;">Definição da volumetria (média de pedidos/mês) para
+                            dimensionar os servidores (AWS/DigitalOcean).</li>
+                        <li style="margin-bottom: 0.5rem;">Apresentação da Proposta Comercial (Prazos e Valores) pela
+                            GSTek.</li>
+                    </ol>
+                </div>
             </div>
         </div>
 
-        <!-- Seção 1 -->
-        <h2>📦 1. Volume e Operação Básica</h2>
-        
-        <div class="question">
-            <p>1.1. Qual é a média de pedidos mensais somando todos os canais de venda?</p>
-            <textarea placeholder="Anotações sobre volume mensal..."></textarea>
-        </div>
+        <!-- Matriz de Integração -->
+        <div class="card" style="margin-top: 2rem;">
+            <h2 class="section-title">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                    </path>
+                </svg>
+                Matriz de Viabilidade de Integração de APIs
+            </h2>
+            <div class="text-content">
+                <p>Para garantir a viabilidade técnica antes de precificar o projeto, mapeamos exatamente o que
+                    conseguimos extrair de forma automatizada das 4 plataformas e o nível de complexidade.</p>
 
-        <div class="question">
-            <p>1.2. Quantos SKUs (produtos únicos) vocês têm cadastrados hoje?</p>
-            <span class="hint">Considerando as variações (tamanho, cor, etc.)</span>
-            <textarea placeholder="Anotações sobre SKUs e variações..."></textarea>
-        </div>
+                <div class="grid-2" style="margin-top: 1.5rem;">
+                    <!-- ML -->
+                    <div style="border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <h3 style="color: #111827;">1. Mercado Livre</h3>
+                            <span class="status green">🟢 Muito Alta</span>
+                        </div>
+                        <ul style="font-size: 0.95rem; margin-bottom: 0;">
+                            <li><strong>Autenticação:</strong> OAuth 2.0 (Fácil)</li>
+                            <li><strong>Pedidos:</strong> Sim. Endpoint /orders.</li>
+                            <li><strong>Taxas:</strong> Sim. Retorna tarifa de venda e frete.</li>
+                            <li><strong>Recebimentos:</strong> Sim. Integração com API Mercado Pago.</li>
+                        </ul>
+                    </div>
 
-        <div class="question">
-            <p>1.3. Vocês já utilizam algum sistema de gestão (ERP como Bling, Tiny) ou controlam tudo em planilhas?</p>
-            <textarea placeholder="Anotações sobre ERP atual..."></textarea>
-        </div>
+                    <!-- Shopee -->
+                    <div style="border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <h3 style="color: #111827;">2. Shopee</h3>
+                            <span class="status green">🟢 Alta</span>
+                        </div>
+                        <ul style="font-size: 0.95rem; margin-bottom: 0;">
+                            <li><strong>Autenticação:</strong> App Key (Exige aprovação).</li>
+                            <li><strong>Pedidos:</strong> Sim. Endpoints GetOrderList.</li>
+                            <li><strong>Taxas:</strong> Sim. Retorna comissão, taxa de frete e vouchers.</li>
+                        </ul>
+                    </div>
 
-        <div class="question">
-            <p>1.4. Como é feita a emissão de notas fiscais (NF-e / NFC-e) hoje?</p>
-            <span class="hint">O novo sistema precisará emitir as notas diretamente ou vai integrar com um ERP existente?</span>
-            <textarea placeholder="Anotações sobre fiscal e emissão..."></textarea>
-        </div>
+                    <!-- NuvemShop -->
+                    <div style="border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <h3 style="color: #111827;">3. NuvemShop</h3>
+                            <span class="status green">🟢 Muito Alta</span>
+                        </div>
+                        <ul style="font-size: 0.95rem; margin-bottom: 0;">
+                            <li><strong>Autenticação:</strong> OAuth 2.0 (Fácil).</li>
+                            <li><strong>Pedidos:</strong> Sim. Traz itens e frete.</li>
+                            <li><strong>Taxas:</strong> Apenas o valor do pedido. A taxa de cartão vem do gateway (ex:
+                                PagSeguro).</li>
+                        </ul>
+                    </div>
 
-        <!-- Seção 2 -->
-        <h2>🔄 2. Integrações e Canais de Venda</h2>
+                    <!-- Amazon -->
+                    <div style="border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <h3 style="color: #111827;">4. Amazon SP-API</h3>
+                            <span class="status yellow">🟡 Complexa</span>
+                        </div>
+                        <ul style="font-size: 0.95rem; margin-bottom: 0;">
+                            <li><strong>Autenticação:</strong> AWS IAM + OAuth. Muito rigoroso.</li>
+                            <li><strong>Pedidos e Taxas:</strong> Sim (Orders API e Finances API).</li>
+                        </ul>
+                        <div class="alert">
+                            <strong>⚠️ PII:</strong> A Amazon oculta dados do cliente após a entrega. Sistema deve
+                            salvar imediatamente.
+                        </div>
+                    </div>
+                </div>
 
-        <div class="question">
-            <p>2.1. Mercado Livre, Shopee e Nuvemshop: Possuem apenas uma conta em cada?</p>
-            <span class="hint">Ou gerenciam múltiplas contas/CNPJs nas plataformas?</span>
-            <textarea placeholder="Anotações sobre contas nos marketplaces..."></textarea>
-        </div>
-
-        <div class="question">
-            <p>2.2. WhatsApp e Instagram: Como esperam integrar?</p>
-            <span class="hint">A ideia é apenas registrar essas vendas manualmente no sistema, ou esperam automação (ex: bot que cria pedido)?</span>
-            <textarea placeholder="Anotações sobre vendas sociais..."></textarea>
-        </div>
-
-        <div class="question">
-            <p>2.3. Quais empresas/métodos de frete e logística vocês utilizam?</p>
-            <span class="hint">Ex: Correios, Melhor Envio, transportadoras próprias, Kangu, Mercado Envios...</span>
-            <textarea placeholder="Anotações sobre logística..."></textarea>
-        </div>
-
-        <!-- Seção 3 -->
-        <h2>🎨 3. Produtos Personalizados (Ponto Crítico)</h2>
-
-        <div class="question">
-            <p>3.1. Qual a proporção das vendas entre produtos personalizados vs. prateleira (não personalizados)?</p>
-            <textarea placeholder="Anotações sobre proporção de vendas..."></textarea>
-        </div>
-
-        <div class="question">
-            <p>3.2. Como funciona o fluxo do personalizado?</p>
-            <span class="hint">Ex: Pedido > Envio da Arte > Aprovação > Produção > Despacho. O sistema precisará gerenciar os status dessa esteira de produção?</span>
-            <textarea placeholder="Anotações sobre a esteira de produção..."></textarea>
-        </div>
-
-        <div class="question">
-            <p>3.3. Como é feita a captura da personalização?</p>
-            <span class="hint">O cliente faz no ato da compra (via site) ou vocês combinam os detalhes pelo WhatsApp após o pagamento?</span>
-            <textarea placeholder="Anotações sobre coleta de dados de personalização..."></textarea>
-        </div>
-
-        <div class="question">
-            <p>3.4. O sistema precisará armazenar e gerenciar os arquivos de arte/design vinculados a cada pedido?</p>
-            <textarea placeholder="Anotações sobre gestão de arquivos..."></textarea>
-        </div>
-
-        <!-- Seção 4 -->
-        <h2>💰 4. Financeiro e Precificação</h2>
-
-        <div class="question">
-            <p>4.1. Como vocês calculam o custo do produto hoje?</p>
-            <span class="hint">O sistema precisará de uma ficha técnica (composição de insumos) para os personalizados?</span>
-            <textarea placeholder="Anotações sobre custo e ficha técnica..."></textarea>
-        </div>
-
-        <div class="question">
-            <p>4.2. Precisa de conciliação automática dos repasses dos marketplaces?</p>
-            <span class="hint">Descontando taxas de comissão da plataforma, taxas fixas e frete retido.</span>
-            <textarea placeholder="Anotações sobre repasses..."></textarea>
-        </div>
-
-        <div class="question">
-            <p>4.3. O controle de Contas a Pagar/Receber envolverá conciliação bancária?</p>
-            <span class="hint">Ex: importar arquivo OFX do banco mensalmente ou API.</span>
-            <textarea placeholder="Anotações sobre conciliação bancária..."></textarea>
-        </div>
-
-        <div class="question">
-            <p>4.4. Sobre a Margem de Contribuição: quais custos variáveis querem ratear?</p>
-            <span class="hint">Além de taxas e impostos, querem incluir embalagem, custo de tráfego/ads por pedido?</span>
-            <textarea placeholder="Anotações sobre formação de margem..."></textarea>
-        </div>
-
-        <!-- Seção 5 -->
-        <h2>🏗️ 5. Estoque e Logística</h2>
-
-        <div class="question">
-            <p>5.1. Como é feita a baixa de estoque dos personalizados?</p>
-            <span class="hint">O estoque é da matéria-prima (ex: caneca branca em branco) ou do produto final?</span>
-            <textarea placeholder="Anotações sobre baixa de estoque..."></textarea>
-        </div>
-
-        <div class="question">
-            <p>5.2. Vocês trabalham com múltiplos locais de estoque?</p>
-            <span class="hint">Ex: estoque físico local vs. Fulfillment do Mercado Livre/Shopee.</span>
-            <textarea placeholder="Anotações sobre múltiplos estoques..."></textarea>
+                <div class="highlight-box">
+                    <h3 style="color: var(--primary-dark); margin-bottom: 0.5rem;">Conclusão Técnica</h3>
+                    <ul style="margin-bottom: 0;">
+                        <li>É <strong>100% possível</strong> construir a unificação financeira.</li>
+                        <li><strong>Cálculo de Custo:</strong> A API manda por quanto foi vendido. O sistema interno é
+                            quem vai ter a tabela "Caneca = R$ 15,00" para fazer a matemática (Venda - Taxa - Custo =
+                            Lucro).</li>
+                        <li><strong>Mapeamento de SKUs (De/Para):</strong> O sistema precisará de uma tela para vincular
+                            códigos externos (ex: MLB999) ao produto interno.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <!-- Botões -->
-        <div class="actions">
-            <button onclick="window.print()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-                Imprimir / Salvar em PDF
+        <div id="actionButtons" class="actions">
+            <button class="btn btn-review" onclick="openReviewModal()">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                    </path>
+                </svg>
+                Rever Escopo
             </button>
-            <button class="secondary" onclick="limparTudo()">
-                Limpar Campos
+            <button class="btn btn-approve" onclick="openApproveModal()">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Aprovar Arquitetura
             </button>
         </div>
     </div>
 
-    <script>
-        // Elementos do formulário
-        const dataInput = document.getElementById('data');
-        const clienteInput = document.getElementById('cliente');
-        const textareas = document.querySelectorAll('textarea');
+    <!-- Modais -->
+    <div id="approveModal" class="modal">
+        <div class="modal-content">
+            <div
+                style="background: #D1FAE5; color: #059669; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <h2 style="margin-bottom: 1rem; color: #111827;">Escopo Aprovado!</h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem;">A GSTek irá avançar para a formatação do orçamento
+                financeiro e cronograma de desenvolvimento.</p>
+            <button class="btn btn-approve" style="width: 100%; justify-content: center;"
+                onclick="confirmarAprovacao()">Excelente!</button>
+        </div>
+    </div>
 
-        // 1. Carregar dados salvos ao abrir a página
-        window.onload = () => {
-            // Se não tiver data salva, bota a de hoje
-            if (!localStorage.getItem('briefing_data')) {
-                dataInput.valueAsDate = new Date();
-            } else {
-                dataInput.value = localStorage.getItem('briefing_data');
+    <script>
+        window.onload = function () {
+            if (localStorage.getItem('dom_lux_aprovado') === 'true') {
+                setApprovedState();
             }
-            
-            clienteInput.value = localStorage.getItem('briefing_cliente') || '';
-            
-            textareas.forEach((t, index) => {
-                t.value = localStorage.getItem(`briefing_q${index}`) || '';
-            });
         };
 
-        // 2. Salvar automaticamente no navegador sempre que você digitar algo
-        clienteInput.addEventListener('input', (e) => localStorage.setItem('briefing_cliente', e.target.value));
-        dataInput.addEventListener('input', (e) => localStorage.setItem('briefing_data', e.target.value));
-        
-        textareas.forEach((t, index) => {
-            t.addEventListener('input', (e) => {
-                localStorage.setItem(`briefing_q${index}`, e.target.value);
-            });
-        });
+        function setApprovedState() {
+            document.getElementById('actionButtons').style.display = 'none';
+            document.getElementById('badgeApproved').style.display = 'flex';
+        }
 
-        // 3. Limpar tudo
-        function limparTudo() {
-            if(confirm('Tem certeza que deseja limpar todas as respostas? Isso apagará os dados salvos e não tem volta.')) {
-                // Limpa o cache do navegador para esse site
-                localStorage.clear();
-                
-                // Limpa os campos visuais
-                textareas.forEach(t => t.value = '');
-                clienteInput.value = '';
-                dataInput.valueAsDate = new Date();
+        function confirmarAprovacao() {
+            closeModals();
+            localStorage.setItem('dom_lux_aprovado', 'true');
+            setApprovedState();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openApproveModal() {
+            document.getElementById('approveModal').style.display = 'flex';
+        }
+        function openReviewModal() {
+            alert("Feedback registrado. Por favor, alinhe com o seu consultor da GSTek quais pontos precisam ser ajustados no escopo.");
+        }
+        function closeModals() {
+            document.getElementById('approveModal').style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('approveModal')) {
+                closeModals();
             }
         }
     </script>
 </body>
+
 </html>
