@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: domlux_db
+      POSTGRES_USER: domlux_user
+      POSTGRES_PASSWORD: domlux_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  web:
+    build: ./backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_DB=domlux_db
+      - POSTGRES_USER=domlux_user
+      - POSTGRES_PASSWORD=domlux_password
+      - POSTGRES_HOST=db
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    depends_on:
+      - db
+      - redis
+
+  celery:
+    build: ./backend
+    command: celery -A domlux_core worker -l INFO
+    volumes:
+      - ./backend:/app
+    environment:
+      - POSTGRES_DB=domlux_db
+      - POSTGRES_USER=domlux_user
+      - POSTGRES_PASSWORD=domlux_password
+      - POSTGRES_HOST=db
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    depends_on:
+      - db
+      - redis
+      - web
+
+volumes:
+  postgres_data:
