@@ -14,28 +14,28 @@ Como a programação bruta do núcleo foi abstraída, os **77 dias úteis** prev
 ## 🔌 Etapa 1: "Data Binding" (Conexão Front e Back) (Dias 1-10)
 **Foco:** Ligar as pontas soltas locais.
 
-* [ ] Configurar CORS no Django `settings.py` para aceitar conexões do React (`localhost:5173`).
-* [ ] Refatorar os componentes `Dashboard.jsx` e `FinanceTable.jsx` do React para remover os "dados mockados" e passar a usar `fetch()` para consumir a nossa rota `/api/v1/dashboard/financials/`.
-* [ ] Garantir que os gráficos do Chart.js processem corretamente as somatórias de Caixa e Lucro devolvidas pela API.
+* [x] Configurar CORS no Django `settings.py` para aceitar conexões do React (`localhost:5173`).
+* [x] Refatorar os componentes `Dashboard.jsx` e `FinanceTable.jsx` do React para remover os "dados mockados" e passar a usar `fetch()` para consumir a nossa rota `/api/v1/dashboard/financials/`.
+* [x] Garantir que os gráficos do Chart.js processem corretamente as somatórias de Caixa e Lucro devolvidas pela API.
 
 ## 🔑 Etapa 2: Homologação de APIs (Sandbox e Keys) (Dias 11-30)
 **Foco:** Testar as integrações com os sistemas terceiros em modo Sandbox. *(Depende do Cliente)*.
 
-* [ ] Pegar o App Key, Client Secret, Shop ID e Partner ID do cliente (Shopee, ML e NuvemShop) e imputar no Django Admin.
-* [ ] Rodar os `sync_tasks` manualmente usando um pedido falso para confirmar que a criptografia OAuth e HMAC-SHA256 da Shopee não está quebrando.
+* [x] Pegar o App Key, Client Secret, Shop ID e Partner ID do cliente (Shopee, ML e NuvemShop) e imputar no Django Admin.
+* [x] Rodar os `sync_tasks` manualmente usando um pedido falso para confirmar que a criptografia OAuth e HMAC-SHA256 da Shopee não está quebrando.
 * [ ] Testar a renovação do Token do ML após 6 horas.
 
 ## 🕸️ Etapa 3: Webhooks e Concorrência (Dias 31-45)
 **Foco:** Ajustes finos de tempo real.
 
-* [ ] Criar endpoint POST `/api/webhooks/mercadolivre/` para receber o "ping" do ML informando que uma venda aconteceu, tirando a necessidade do Celery consultar o ML de 5 em 5 minutos.
-* [ ] Escrever o código real de PUT na API da Shopee/ML dentro das tasks do Celery `push_stock_` para dar a baixa do estoque no outbound.
+* [x] Criar endpoint POST `/api/webhooks/mercadolivre/` para receber o "ping" do ML informando que uma venda aconteceu, tirando a necessidade do Celery consultar o ML de 5 em 5 minutos.
+* [x] Escrever o código real de PUT na API da Shopee/ML dentro das tasks do Celery `push_stock_` para dar a baixa do estoque no outbound.
 
 ## 💣 Etapa 4: Carga de Dados Iniciais (Dias 46-60)
 **Foco:** Preparar a base para o lançamento.
 
-* [ ] Usar um script Python para importar os 500 SKUs da planilha da cliente para dentro do model `Product` (Nome, Custo, Embalagem, Imposto).
-* [ ] Mapear o "De/Para" de pelo menos os 50 produtos mais vendidos para garantir a prova de conceito e a precisão do cálculo da DRE nos primeiros dias.
+* [x] Usar um script Python para importar os 500 SKUs da planilha da cliente para dentro do model `Product` (Nome, Custo, Embalagem, Imposto).
+* [x] Mapear o "De/Para" de pelo menos os 50 produtos mais vendidos para garantir a prova de conceito e a precisão do cálculo da DRE nos primeiros dias.
 
 ## 🌐 Etapa 5: Deploy Cloud e Treinamento (Dias 61-77)
 **Foco:** Produção e Go-Live.
