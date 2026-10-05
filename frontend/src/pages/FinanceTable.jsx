@@ -1,10 +1,41 @@
+import { useState, useEffect } from 'react';
+
 export default function FinanceTable() {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/v1/dashboard/financials/')
+      .then(res => res.json())
+      .then(data => {
+        setOrders(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Erro ao puxar tabela:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  const formatBRL = (value) => {
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+  };
+
+  const getCanalClass = (canalName) => {
+    if (!canalName) return '';
+    const name = canalName.toLowerCase();
+    if (name.includes('livre')) return 'canal-ml';
+    if (name.includes('shopee')) return 'canal-shopee';
+    if (name.includes('nuvem')) return 'canal-nuvem';
+    return 'canal-wpp';
+  };
+
   return (
     <>
       <header className="topbar">
         <div>
           <h1>DRE por Venda (Tempo Real)</h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Tabela com 12 indicadores financeiros</p>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Conectado diretamente ao Motor Financeiro do Backend</p>
         </div>
       </header>
 
@@ -32,7 +63,6 @@ export default function FinanceTable() {
                   <th>Cliente</th>
                   <th>Produto (SKU)</th>
                   <th>Venda (R$)</th>
-                  <th>Taxas/Frete</th>
                   <th>Custo Prod.</th>
                   <th>Imposto</th>
                   <th>Caixa Gerado</th>
@@ -41,20 +71,33 @@ export default function FinanceTable() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>01/10/26 14:30</td>
-                  <td><span className="badge-canal canal-ml">Mercado Livre</span></td>
-                  <td style={{ fontFamily: 'monospace', color: 'var(--primary)' }}>#ML-99281</td>
-                  <td>João Silva</td>
-                  <td><strong>Caneca Mágica</strong><br/><span style={{ fontSize: '0.75rem', color: '#9CA3AF' }}>SKU: CAN-MAG-01</span></td>
-                  <td className="money">45,00</td>
-                  <td className="money text-red">- 8,50</td>
-                  <td className="money text-red">- 12,00</td>
-                  <td className="money text-red">- 2,70</td>
-                  <td className="money">36,50</td>
-                  <td className="money lucro-col text-green">R$ 21,80</td>
-                  <td className="lucro-col text-green">48,4%</td>
-                </tr>
+                {loading && (
+                    <tr><td colSpan="11" style={{textAlign:'center'}}>Carregando API...</td></tr>
+                )}
+                
+                {!loading && orders.length === 0 && (
+                    <tr><td colSpan="11" style={{textAlign:'center'}}>Nenhum pedido processado ainda. Venda algo!</td></tr>
+                )}
+
+                {orders.map(order => (
+                  <tr key={order.id}>
+                    <td style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                        {new Date(order.order_date).toLocaleString('pt-BR')}
+                    </td>
+                    <td>
+                        <span className={`badge-canal ${getCanalClass(order.canal)}`}>{order.canal || 'N/A'}</span>
+                    </td>
+                    <td style={{ fontFamily: 'monospace', color: 'var(--primary)' }}>{order.external_order_id}</td>
+                    <td>{order.customer_name}</td>
+                    <td><strong>{order.produto_str}</strong></td>
+                    <td className="money">{formatBRL(order.total_amount)}</td>
+                    <td className="money text-red">- {formatBRL(order.total_product_cost)}</td>
+                    <td className="money text-red">- {formatBRL(order.calculated_tax)}</td>
+                    <td className="money text-green">{formatBRL(order.caixa)}</td>
+                    <td className="money lucro-col text-green">{formatBRL(order.net_profit)}</td>
+                    <td className="lucro-col text-green">{parseFloat(order.profit_margin).toFixed(1)}%</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
