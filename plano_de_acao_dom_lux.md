@@ -37,7 +37,16 @@ Como a programação bruta do núcleo foi abstraída, os **77 dias úteis** prev
 * [x] Usar um script Python para importar os 500 SKUs da planilha da cliente para dentro do model `Product` (Nome, Custo, Embalagem, Imposto).
 * [x] Mapear o "De/Para" de pelo menos os 50 produtos mais vendidos para garantir a prova de conceito e a precisão do cálculo da DRE nos primeiros dias.
 
-## 🌐 Etapa 5: Deploy Cloud e Treinamento (Dias 61-77)
+## 🎁 Etapa 5: Módulo Bônus - Contas a Pagar, Receber e Conciliação Bancária (Dias 61-70)
+**Foco:** Gestão avançada de despesas, fluxo de caixa e fechamento financeiro (Oferecido como cortesia comercial).
+
+* [ ] **Gestão de Despesas e Fornecedores:** Criar models no Django para cadastro de fornecedores, contas de consumo (água, luz, internet), folha de pagamento e impostos (Centros de Custo).
+* [ ] **Anexos e Comprovantes:** Upload de arquivos PDF/Imagens (boletos e recibos) linkados diretamente à despesa para auditoria rápida.
+* [ ] **Painel de Contas a Pagar/Receber:** Criar interface no React com visão de calendário, alertas de contas vencidas e projeção de pagamentos futuros (Fluxo de Caixa).
+* [ ] **Motor de Conciliação Bancária (OFX):** Desenvolver script Python para ler extratos bancários no formato padrão OFX e realizar o "match" automático entre a saída de dinheiro e as contas registradas.
+* [ ] **DRE Real (Lucro Líquido):** Integrar os custos operacionais (fixos e variáveis) com as vendas brutas importadas da Shopee/Mercado Livre/NuvemShop para calcular o verdadeiro Lucro Líquido do mês.
+
+## 🌐 Etapa 6: Deploy Cloud e Treinamento (Dias 71-77)
 **Foco:** Produção e Go-Live.
 
 * [ ] Contratar VPS (DigitalOcean Droplet).

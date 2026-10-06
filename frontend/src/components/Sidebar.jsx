@@ -20,9 +20,21 @@ export default function Sidebar() {
         Inteligência Financeira
       </Link>
       
-      <div className="nav-item">Gestão de Estoque</div>
-      <div className="nav-item">Custos e SKUs</div>
-      <div className="nav-item">Configurações</div>
+      <Link to="/payable" className={`nav-item ${location.pathname === '/payable' ? 'active' : ''}`}>
+        Contas a Pagar
+      </Link>
+      <Link to="/reconciliation" className={`nav-item ${location.pathname === '/reconciliation' ? 'active' : ''}`}>
+        Conciliação
+      </Link>
+      <Link to="/estoque" className={`nav-item ${location.pathname === '/estoque' ? 'active' : ''}`}>
+        Gestão de Estoque
+      </Link>
+      <Link to="/skus" className={`nav-item ${location.pathname === '/skus' ? 'active' : ''}`}>
+        Custos e SKUs
+      </Link>
+      <Link to="/settings" className={`nav-item ${location.pathname === '/settings' ? 'active' : ''}`}>
+        Configurações
+      </Link>
     </aside>
   );
 }
