@@ -1,563 +1,648 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proposta Comercial - Dom Lux Brindes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #4F46E5;
-            --primary-dark: #4338CA;
-            --secondary: #10B981;
-            --secondary-dark: #059669;
-            --bg: #F9FAFB;
-            --surface: #FFFFFF;
-            --text-main: #111827;
-            --text-light: #4B5563;
-            --border: #E5E7EB;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #1E1B4B 0%, #4F46E5 100%);
-            color: white;
-            padding: 5rem 2rem 6rem;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: -4rem auto 4rem;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .card {
-            background: var(--surface);
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
-            border: 1px solid var(--border);
-        }
-
-        .header-tags {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .tag-group p {
-            margin-bottom: 0.25rem;
-            font-size: 0.95rem;
-        }
-
-        .tag-group strong {
-            color: var(--primary-dark);
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .text-content p {
-            margin-bottom: 1rem;
-            color: var(--text-light);
-        }
-
-        .text-content ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-        }
-
-        .text-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .module-box {
-            background: #F3F4F6;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--primary);
-        }
-
-        .module-box h3 {
-            color: #111827;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .highlight-box {
-            background: #EEF2FF;
-            border: 1px solid #C7D2FE;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-top: 1.5rem;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaga Fácil GO — Proposta de Projeto & Apresentação da Plataforma</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- html2pdf.js CDN para download direto em PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            goias: {
+              green: '#008744',
+              greenDark: '#006331',
+              blue: '#0057b8',
+              gold: '#fbb900',
+              light: '#f0fdf4'
             }
+          }
         }
+      }
+    }
+  </script>
 
-        .status {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 99px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .status.green {
-            background: #D1FAE5;
-            color: #065F46;
-        }
-
-        .status.yellow {
-            background: #FEF3C7;
-            color: #92400E;
-        }
-
-        .alert {
-            background: #FEF2F2;
-            color: #991B1B;
-            padding: 0.75rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .actions {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-approve {
-            background-color: var(--secondary);
-            color: white;
-            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
-        }
-
-        .btn-approve:hover {
-            background-color: var(--secondary-dark);
-            transform: translateY(-2px);
-        }
-
-        .btn-review {
-            background-color: white;
-            color: #EF4444;
-            border: 1px solid #EF4444;
-        }
-
-        .btn-review:hover {
-            background-color: #FEF2F2;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 100;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(4px);
-        }
-
-        .modal-content {
-            background: white;
-            padding: 3rem;
-            border-radius: 16px;
-            text-align: center;
-            max-width: 400px;
-            animation: slideUp 0.3s ease-out;
-            margin: 0 1rem;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .badge-approved {
-            display: none;
-            background-color: var(--secondary);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 99px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 1.5rem auto 0;
-            width: fit-content;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.4);
-            animation: slideUp 0.5s ease-out;
-        }
-    </style>
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body { background-color: #fff !important; color: #111 !important; font-size: 11pt; }
+      .page-break { page-break-before: always; }
+      .shadow-xl, .shadow-2xl, .shadow-md { box-shadow: none !important; border: 1px solid #e5e7eb; }
+    }
+    .chat-bubble-received {
+      background-color: #ffffff;
+      border-radius: 0 16px 16px 16px;
+    }
+    .chat-bubble-sent {
+      background-color: #dcf8c6;
+      border-radius: 16px 0 16px 16px;
+    }
+  </style>
 </head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-emerald-500 selection:text-white">
 
-<body>
-
-    <header class="header">
-        <h1>Proposta de Desenvolvimento</h1>
-        <p>Plataforma de Gestão Unificada e Motor Financeiro</p>
-        <div id="badgeApproved" class="badge-approved">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-            </svg>
-            PROPOSTA APROVADA
+  <!-- BARRA DE TOPO / AÇÕES -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-emerald-500/20">
+          <i class="fa-solid fa-briefcase"></i>
         </div>
-    </header>
-
-    <div class="container">
-
-        <!-- Apresentação & Problema -->
-        <div class="card">
-            <div class="header-tags">
-                <div class="tag-group">
-                    <p><strong>Cliente:</strong> Dom Lux Brindes</p>
-                    <p><strong>Consultoria:</strong> GSTek - Engenharia de Software Corporativo</p>
-                </div>
-                <div class="tag-group" style="text-align: right;">
-                    <p><strong>Stack Tecnológico:</strong> Python, Django, PostgreSQL, Celery, Docker</p>
-                </div>
-            </div>
-
-            <div class="text-content">
-                <h2 class="section-title">1. O Problema Atual (A Dor)</h2>
-                <p>Hoje, a Dom Lux perde tempo precioso exportando relatórios mensais separados do Mercado Livre e da
-                    Shopee para consolidar tudo manualmente em planilhas. Para cada venda, ela precisa cruzar
-                    manualmente os dados para chegar nos 12 indicadores-chave (Custo, Venda, Impostos, Caixa, Lucro e
-                    Margem de Contribuição) de seus cerca de 500 SKUs.</p>
-
-                <h2 class="section-title" style="margin-top: 2rem;">2. A Solução Proposta (O Fim das Planilhas)</h2>
-                <p>Desenvolver uma Plataforma de Gestão Multicanal sob medida. O sistema vai substituir as planilhas
-                    fragmentadas, conectando-se diretamente às plataformas de venda para automatizar a captura de dados
-                    e o cálculo financeiro de cada centavo que entra e sai.</p>
-                <p>A plataforma será construída baseada nos seguintes módulos:</p>
-            </div>
+        <div>
+          <span class="font-extrabold text-slate-900 tracking-tight text-lg">Vaga Fácil <span class="text-emerald-600">GO</span></span>
+          <span class="hidden sm:inline-block ml-2 text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded-full">Inovação & Inclusão Produtiva</span>
         </div>
+      </div>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button onclick="salvarComoPDF()" id="btn-pdf-nav" class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-lg shadow-sm shadow-rose-600/30 transition-all">
+          <i class="fa-solid fa-file-pdf text-sm"></i>
+          <span>Salvar em PDF</span>
+        </button>
+        <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors border border-slate-300">
+          <i class="fa-solid fa-print"></i>
+          <span class="hidden sm:inline">Imprimir</span>
+        </button>
+        <a href="#simulador" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-sm shadow-emerald-600/30 transition-all">
+          <i class="fa-solid fa-play"></i>
+          <span class="hidden sm:inline">Ver Simulador</span>
+        </a>
+      </div>
+    </div>
+  </header>
 
-        <!-- Módulos da Solução -->
-        <div class="card">
-            <div class="text-content">
-                <div class="module-box">
-                    <h3>Módulo 1: Motor de Captação de Pedidos (Automação)</h3>
-                    <ul>
-                        <li><strong>Integração API (Automática):</strong> Robôs de sincronização que puxam
-                            automaticamente todos os pedidos do Mercado Livre, Shopee e NuvemShop em tempo real
-                            (ou periodicamente).</li>
-                        <li><strong>Lançamento Manual Rápido:</strong> Uma tela otimizada para registro de vendas
-                            sociais (WhatsApp e Instagram).</li>
-                        <li><strong>Aposentadoria de Relatórios:</strong> A cliente não precisará mais exportar
-                            relatórios nas plataformas; o sistema fará a varredura e importação contínua de todos os
-                            dados do pedido.</li>
-                    </ul>
-                </div>
+  <!-- HERO SECTION -->
+  <section class="relative overflow-hidden pt-12 pb-16 bg-gradient-to-b from-white via-emerald-50/40 to-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-300/50 text-emerald-900 text-xs font-bold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+            Projeto de Inovação Social e Tecnológica • Goiás
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
+            Menos burocracia. <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-sky-600">
+              Mais oportunidades reais.
+            </span>
+          </h1>
 
-                <div class="module-box">
-                    <h3>Módulo 2: Gestão Inteligente de Custos (Base do Lucro)</h3>
-                    <p>Para que o sistema calcule a margem sozinho, ele precisa conhecer os custos.</p>
-                    <ul>
-                        <li><strong>Cadastro Unificado de Produtos (500 SKUs):</strong> Base central da inteligência.
-                        </li>
-                        <li><strong>Matriz de Custos:</strong> Cada produto terá campos para Custo Base e Custo de
-                            Embalagem.</li>
-                        <li><strong>Matriz de Impostos:</strong> Configuração de Imposto Individual (%), garantindo que
-                            o cálculo bata com a realidade contábil.</li>
-                        <li><strong>Regras das Plataformas:</strong> O sistema vai considerar as taxas e comissões que
-                            os marketplaces retêm na fonte.</li>
-                    </ul>
-                </div>
+          <p class="text-lg text-slate-600 leading-relaxed max-w-2xl">
+            Uma central pública-privada inteligente que conecta trabalhadores e empregadores goianos. 
+            Eliminamos os cadastros de 40 minutos e as barreiras digitais: o cidadão se cadastra uma única vez e se candidata com <strong>1 clique</strong> ou direto pelo <strong>WhatsApp</strong>.
+          </p>
 
-                <div class="module-box">
-                    <h3>Módulo 3: Estoque Inteligente e Multicanal (A Base)</h3>
-                    <p>O coração operacional logístico para evitar vendas sem estoque.</p>
-                    <ul>
-                        <li><strong>Baixa Automática:</strong> Comunicação bidirecional com as plataformas. Ao vender um item em qualquer canal, o sistema dá baixa localmente.</li>
-                        <li><strong>Sincronização em Rede:</strong> O saldo atualizado é refletido imediatamente no Mercado Livre, Shopee e NuvemShop para evitar furos de estoque.</li>
-                    </ul>
-                </div>
-
-                <div class="module-box">
-                    <h3>Módulo 4: Inteligência Financeira e Painel de Lucro</h3>
-                    <p>O sistema replicará a lógica que já é utilizada, porém de forma automatizada, instantânea e
-                        unificada.</p>
-                    <ul>
-                        <li><strong>Geração Automática de DRE por Pedido:</strong> O sistema exibirá as colunas: ID,
-                            Data, Cliente, Nº Pedido, Produto, Custo, Valor Venda, Imposto, Caixa, Lucro, % de Lucro,
-                            Margem de Contribuição.</li>
-                        <li><strong>Dashboard Unificado:</strong> Um painel onde ao selecionar "Mês de Outubro", o
-                            sistema consolida o lucro real somando Mercado Livre + Shopee + NuvemShop +
-                            WhatsApp.</li>
-                    </ul>
-                </div>
-
-                <div class="module-box" style="margin-bottom: 0;">
-                    <h3>Módulo 5: Controle de Acesso e Usuários</h3>
-                    <ul>
-                        <li><strong>Sistema de Permissões:</strong> Separação de acesso para os 4 usuários iniciais.
-                        </li>
-                        <li><strong>Exemplo:</strong> Um usuário de "Operação" pode lançar vendas do WhatsApp, mas não
-                            pode ver a coluna "% de Lucro", que fica restrita aos administradores.</li>
-                    </ul>
-                </div>
+          <!-- Badges de Destaque -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+                <i class="fa-solid fa-mouse-pointer"></i>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500 font-medium">Candidatura</p>
+                <p class="text-sm font-bold text-slate-800">Em 1 Clique</p>
+              </div>
             </div>
-        </div>
 
-        <!-- Escopo Opcional e Próximos Passos -->
-        <div class="grid-2">
-            <div class="card" style="margin-bottom: 0;">
-                <h2 class="section-title">3. Escopo Opcional (Futuro)</h2>
-                <div class="text-content">
-                    <p>Oportunidades de evolução para a plataforma (orçamento separado):</p>
-                    <ul>
-                        <li><strong>Contas a Pagar, Receber e Conciliação:</strong> Gestão de despesas da empresa, boletos e importação automática do extrato (OFX) para cruzar com repasses.</li>
-                        <li><strong>Esteira de Produção:</strong> Módulo "Kanban" para gerenciar os itens
-                            personalizados, anexando artes aprovadas.</li>
-                    </ul>
-                </div>
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-green-50 text-green-600 flex items-center justify-center font-bold">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500 font-medium">Acesso Popular</p>
+                <p class="text-sm font-bold text-slate-800">100% WhatsApp</p>
+              </div>
             </div>
-            <div class="card" style="margin-bottom: 0;">
-                <h2 class="section-title">4. Próximos Passos</h2>
-                <div class="text-content">
-                    <ol style="margin-left: 1.5rem; color: var(--text-light);">
-                        <li style="margin-bottom: 0.5rem;">Aprovação desta arquitetura inicial e da abordagem focada no
-                            motor financeiro.</li>
-                        <li style="margin-bottom: 0.5rem;">Definição da volumetria (média de pedidos/mês) para
-                            dimensionar os servidores (AWS/DigitalOcean).</li>
-                        <li style="margin-bottom: 0.5rem;">Apresentação da Proposta Comercial (Prazos e Valores) pela
-                            GSTek.</li>
-                    </ol>
-                </div>
+
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 col-span-2 sm:col-span-1">
+              <div class="w-9 h-9 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center font-bold">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500 font-medium">Território Piloto</p>
+                <p class="text-sm font-bold text-slate-800">Eixo Metropolitano</p>
+              </div>
             </div>
-        </div>
+          </div>
 
-        <!-- Matriz de Integração -->
-        <div class="card" style="margin-top: 2rem;">
-            <h2 class="section-title">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-                    </path>
-                </svg>
-                Matriz de Viabilidade de Integração de APIs
-            </h2>
-            <div class="text-content">
-                <p>Para garantir a viabilidade técnica antes de precificar o projeto, mapeamos exatamente o que
-                    conseguimos extrair de forma automatizada das 4 plataformas e o nível de complexidade.</p>
-
-                <div class="grid-2" style="margin-top: 1.5rem;">
-                    <!-- ML -->
-                    <div style="border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                            <h3 style="color: #111827;">1. Mercado Livre</h3>
-                            <span class="status green">🟢 Muito Alta</span>
-                        </div>
-                        <ul style="font-size: 0.95rem; margin-bottom: 0;">
-                            <li><strong>Autenticação:</strong> OAuth 2.0 (Fácil)</li>
-                            <li><strong>Pedidos:</strong> Sim. Endpoint /orders.</li>
-                            <li><strong>Taxas:</strong> Sim. Retorna tarifa de venda e frete.</li>
-                            <li><strong>Recebimentos:</strong> Sim. Integração com API Mercado Pago.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Shopee -->
-                    <div style="border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                            <h3 style="color: #111827;">2. Shopee</h3>
-                            <span class="status green">🟢 Alta</span>
-                        </div>
-                        <ul style="font-size: 0.95rem; margin-bottom: 0;">
-                            <li><strong>Autenticação:</strong> App Key (Exige aprovação).</li>
-                            <li><strong>Pedidos:</strong> Sim. Endpoints GetOrderList.</li>
-                            <li><strong>Taxas:</strong> Sim. Retorna comissão, taxa de frete e vouchers.</li>
-                        </ul>
-                    </div>
-
-                    <!-- NuvemShop -->
-                    <div style="border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                            <h3 style="color: #111827;">3. NuvemShop</h3>
-                            <span class="status green">🟢 Muito Alta</span>
-                        </div>
-                        <ul style="font-size: 0.95rem; margin-bottom: 0;">
-                            <li><strong>Autenticação:</strong> OAuth 2.0 (Fácil).</li>
-                            <li><strong>Pedidos:</strong> Sim. Traz itens e frete.</li>
-                            <li><strong>Taxas:</strong> Apenas o valor do pedido. A taxa de cartão vem do gateway (ex:
-                                PagSeguro).</li>
-                        </ul>
-                    </div>
-
-
-                </div>
-
-                <div class="highlight-box">
-                    <h3 style="color: var(--primary-dark); margin-bottom: 0.5rem;">Conclusão Técnica</h3>
-                    <ul style="margin-bottom: 0;">
-                        <li>É <strong>100% possível</strong> construir a unificação financeira.</li>
-                        <li><strong>Cálculo de Custo:</strong> A API manda por quanto foi vendido. O sistema interno é
-                            quem vai ter a tabela "Caneca = R$ 15,00" para fazer a matemática (Venda - Taxa - Custo =
-                            Lucro).</li>
-                        <li><strong>Mapeamento de SKUs (De/Para):</strong> O sistema precisará de uma tela para vincular
-                            códigos externos (ex: MLB999) ao produto interno.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Botões -->
-        <div id="actionButtons" class="actions">
-            <button class="btn btn-review" onclick="openReviewModal()">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
-                    </path>
-                </svg>
-                Rever Escopo
+          <!-- Botões de Ação Imediata -->
+          <div class="flex flex-wrap items-center gap-3 pt-3 no-print">
+            <button onclick="salvarComoPDF()" class="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm shadow-md shadow-rose-600/25 transition-all transform hover:-translate-y-0.5">
+              <i class="fa-solid fa-file-pdf text-base"></i>
+              <span>Salvar Proposta em PDF</span>
             </button>
-            <button class="btn btn-approve" onclick="openApproveModal()">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Aprovar Arquitetura
-            </button>
+            <a href="#simulador" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-600/25 transition-all transform hover:-translate-y-0.5">
+              <i class="fa-solid fa-play"></i>
+              <span>Testar Simulador</span>
+            </a>
+          </div>
         </div>
+
+        <!-- Card Resumo Executivo -->
+        <div class="lg:col-span-5">
+          <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl"></div>
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Ficha Técnica do Projeto</span>
+              <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-full">GSTek DEV</span>
+            </div>
+
+            <div class="mt-4 space-y-4 text-sm">
+              <div class="flex justify-between py-2 border-b border-slate-50">
+                <span class="text-slate-500 font-medium">Nome do Projeto:</span>
+                <span class="font-bold text-slate-900">Vaga Fácil GO</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-50">
+                <span class="text-slate-500 font-medium">Área Temática:</span>
+                <span class="font-semibold text-slate-800">Inovação Social & Inclusão Produtiva</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-50">
+                <span class="text-slate-500 font-medium">Público-Alvo:</span>
+                <span class="font-semibold text-slate-800 text-right">Trabalhadores, Jovens & PMEs</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-50">
+                <span class="text-slate-500 font-medium">Municípios Piloto:</span>
+                <span class="font-semibold text-emerald-700">Goiânia, Ap. de Goiânia e Sen. Canedo</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-50">
+                <span class="text-slate-500 font-medium">Stack Tecnológica:</span>
+                <span class="font-semibold text-slate-800">Python/Django • Postgres • WhatsApp API</span>
+              </div>
+              <div class="flex justify-between py-2">
+                <span class="text-slate-500 font-medium">Custo ao Cidadão:</span>
+                <span class="font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">100% Gratuito</span>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-100 text-center">
+              <p class="text-xs text-slate-400">Desenvolvido com foco nas diretrizes de fomento de Goiás (FAPEG / SEDI).</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- O PROBLEMA VS A SOLUÇÃO -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest">Diagnóstico Real de Mercado</span>
+      <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Por que as pessoas desistem de procurar emprego na internet?</h2>
+      <p class="text-slate-600 mt-3 text-sm sm:text-base">
+        A grande barreira para empregar quem mais precisa não é a falta de vagas, mas o excesso de atrito e a complexidade das plataformas existentes.
+      </p>
     </div>
 
-    <!-- Modais -->
-    <div id="approveModal" class="modal">
-        <div class="modal-content">
-            <div
-                style="background: #D1FAE5; color: #059669; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-                </svg>
-            </div>
-            <h2 style="margin-bottom: 1rem; color: #111827;">Escopo Aprovado!</h2>
-            <p style="color: var(--text-light); margin-bottom: 2rem;">A GSTek irá avançar para a formatação do orçamento
-                financeiro e cronograma de desenvolvimento.</p>
-            <button class="btn btn-approve" style="width: 100%; justify-content: center;"
-                onclick="confirmarAprovacao()">Excelente!</button>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Cenário Atual -->
+      <div class="bg-rose-50/60 border border-rose-200 rounded-2xl p-6 sm:p-8 space-y-4">
+        <div class="flex items-center gap-3 text-rose-700 font-bold text-lg">
+          <div class="w-10 h-10 rounded-xl bg-rose-100 flex items-center justify-center">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <h3>Como Funciona Hoje (Barreiras Reais)</h3>
         </div>
+        <ul class="space-y-3.5 text-sm text-slate-700">
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-xmark text-rose-500 mt-1 font-bold"></i>
+            <span><strong>Vagas pulverizadas e inseguras:</strong> Links soltos em stories de Instagram e grupos desorganizados de WhatsApp sem moderação.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-xmark text-rose-500 mt-1 font-bold"></i>
+            <span><strong>Cadastros intermináveis:</strong> Formulários com 5 páginas, testes desnecessários de perfil e obrigação de subir PDFs em computadores.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-xmark text-rose-500 mt-1 font-bold"></i>
+            <span><strong>PMEs abandonadas:</strong> Padarias, oficinas e lojas de bairro não pagam R$ 600/mês para postar vaga em plataformas corporativas.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-xmark text-rose-500 mt-1 font-bold"></i>
+            <span><strong>Exclusão digital:</strong> Quem não tem computador ou não domina ferramentas complexas fica de fora do mercado formal.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Modelo Vaga Fácil GO -->
+      <div class="bg-emerald-50/60 border border-emerald-200 rounded-2xl p-6 sm:p-8 space-y-4">
+        <div class="flex items-center gap-3 text-emerald-800 font-bold text-lg">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <h3>A Proposta Vaga Fácil GO</h3>
+        </div>
+        <ul class="space-y-3.5 text-sm text-slate-700">
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-circle-check text-emerald-600 mt-1 font-bold"></i>
+            <span><strong>Perfil único em 2 minutos:</strong> Nome, telefone, bairro, escolaridade e resumo prático. Preenche uma vez e usa sempre.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-circle-check text-emerald-600 mt-1 font-bold"></i>
+            <span><strong>Candidatura em 1 Clique:</strong> Viu a vaga no celular? Um toque e o perfil é encaminhado com confirmação instantânea.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-circle-check text-emerald-600 mt-1 font-bold"></i>
+            <span><strong>Interação via WhatsApp:</strong> Alertas de vagas compatíveis no bairro e possibilidade de responder perguntas direto pelo chat.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-circle-check text-emerald-600 mt-1 font-bold"></i>
+            <span><strong>Foco no Comércio e PMEs:</strong> Publicação gratuita e rápida para quem movimenta a economia dos bairros goianos.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- OS 3 AMBIENTES DO SISTEMA -->
+  <section class="py-16 bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest">Estrutura Operacional</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Como o Sistema se Organiza</h2>
+        <p class="text-slate-600 mt-2 text-sm">Três áreas integradas desenhadas para alta usabilidade e baixo atrito.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Módulo 1 -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-emerald-300 transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xl mb-5 shadow-md shadow-emerald-600/20">
+              <i class="fa-solid fa-user-check"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">1. Área do Trabalhador</h3>
+            <p class="text-xs font-semibold text-emerald-700 mt-1 uppercase tracking-wide">Foco: Rapidez e Zero Frustração</p>
+            <ul class="mt-4 space-y-2.5 text-xs text-slate-600">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Cadastro simplificado em página única</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Busca filtrada por município e bairro</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Botão "Quero Me Candidatar" em 1 clique</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Acompanhamento do status da candidatura</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Alertas de vagas por WhatsApp</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200/80">
+            <span class="text-[11px] font-medium text-slate-400">Totalmente responsivo para qualquer smartphone</span>
+          </div>
+        </div>
+
+        <!-- Módulo 2 -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-blue-300 transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xl mb-5 shadow-md shadow-blue-600/20">
+              <i class="fa-solid fa-building"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">2. Área das Empresas</h3>
+            <p class="text-xs font-semibold text-blue-700 mt-1 uppercase tracking-wide">Foco: Facilidade para PMEs e RHs</p>
+            <ul class="mt-4 space-y-2.5 text-xs text-slate-600">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> Publicação de vagas em menos de 3 minutos</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> Definição de até 3 critérios de corte objetivos</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> Painel limpo com lista de candidatos aptos</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> Mudança de status: Em análise / Selecionado</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> Acesso direto ao WhatsApp do candidato apto</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200/80">
+            <span class="text-[11px] font-medium text-slate-400">Sem custos abusivos para comerciantes locais</span>
+          </div>
+        </div>
+
+        <!-- Módulo 3 -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-amber-300 transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-xl mb-5 shadow-md shadow-amber-600/20">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">3. Área Administrativa / Gov</h3>
+            <p class="text-xs font-semibold text-amber-700 mt-1 uppercase tracking-wide">Foco: Gestão, Segurança e Métricas</p>
+            <ul class="mt-4 space-y-2.5 text-xs text-slate-600">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> Moderação ativa e combate a vagas falsas/golpes</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> Curadoria de vagas parceiras (SINE / Entidades)</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> Indicadores de empregabilidade por cidade</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> Conformidade contínua com a LGPD</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> Relatórios de impacto social para prestação de contas</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200/80">
+            <span class="text-[11px] font-medium text-slate-400">Ideal para prestação de contas à FAPEG / Governo</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMULADOR INTERATIVO (DEMO VISUAL) -->
+  <section id="simulador" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest">Experiência do Usuário</span>
+      <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Como Funciona na Prática?</h2>
+      <p class="text-slate-600 mt-2 text-sm">Simulação das duas formas mais rápidas de conexão que a plataforma entrega.</p>
     </div>
 
-    <script>
-        window.onload = function () {
-            if (localStorage.getItem('dom_lux_aprovado') === 'true') {
-                setApprovedState();
-            }
-        };
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Simulação Web: Card de Vaga com 1 Clique -->
+      <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-lg p-6 space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-store"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-base">Atendente de Balcão e Caixa</h4>
+              <p class="text-xs text-slate-500">Supermercado & Panificadora Central • Goiânia (Setor Bueno)</p>
+            </div>
+          </div>
+          <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full">CLT</span>
+        </div>
 
-        function setApprovedState() {
-            document.getElementById('actionButtons').style.display = 'none';
-            document.getElementById('badgeApproved').style.display = 'flex';
-        }
+        <div class="space-y-3 text-sm text-slate-600">
+          <p><strong>Descrição:</strong> Atendimento ao cliente, registro de mercadorias no caixa, organização da frente de loja e apoio na reposição de produtos.</p>
+          <div class="flex flex-wrap gap-2 pt-1 text-xs">
+            <span class="bg-slate-100 px-3 py-1 rounded-md text-slate-700 font-medium"><i class="fa-solid fa-money-bill-wave text-emerald-600 mr-1"></i> R$ 1.620,00 + Benefícios</span>
+            <span class="bg-slate-100 px-3 py-1 rounded-md text-slate-700 font-medium"><i class="fa-solid fa-clock text-blue-600 mr-1"></i> Escala 6x1 (Tarde/Noite)</span>
+            <span class="bg-slate-100 px-3 py-1 rounded-md text-slate-700 font-medium"><i class="fa-solid fa-graduation-cap text-purple-600 mr-1"></i> Ensino Médio</span>
+          </div>
+        </div>
 
-        function confirmarAprovacao() {
-            closeModals();
-            localStorage.setItem('dom_lux_aprovado', 'true');
-            setApprovedState();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        <!-- Caixa de Candidatura Rápida Interativa -->
+        <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-4 space-y-3" id="box-candidatura">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-emerald-900 uppercase tracking-wide">Candidatura com 1 Clique</span>
+            <span class="text-[11px] text-emerald-700"><i class="fa-solid fa-shield-halved"></i> Perfil Cadastrado</span>
+          </div>
+          <p class="text-xs text-slate-600">Seu perfil <strong>João da Silva (Goiânia - St. Bueno)</strong> já está pronto. Basta confirmar os critérios da vaga:</p>
+          
+          <div class="space-y-2 text-xs">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" checked class="rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+              <span>Tenho disponibilidade para início imediato</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" checked class="rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+              <span>Tenho fácil acesso ao Setor Bueno</span>
+            </label>
+          </div>
 
-        function openApproveModal() {
-            document.getElementById('approveModal').style.display = 'flex';
-        }
-        function openReviewModal() {
-            alert("Feedback registrado. Por favor, alinhe com o seu consultor da GSTek quais pontos precisam ser ajustados no escopo.");
-        }
-        function closeModals() {
-            document.getElementById('approveModal').style.display = 'none';
-        }
+          <button onclick="simularCandidatura()" id="btn-candidatar" class="w-full mt-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-lg shadow-sm transition-all flex items-center justify-center gap-2 text-sm">
+            <i class="fa-solid fa-paper-plane"></i>
+            QUERO ME CANDIDATAR AGORA
+          </button>
+        </div>
 
-        window.onclick = function (event) {
-            if (event.target == document.getElementById('approveModal')) {
-                closeModals();
-            }
-        }
-    </script>
+        <div id="msg-sucesso" class="hidden bg-emerald-100 border border-emerald-300 text-emerald-900 rounded-xl p-4 text-xs font-semibold flex items-center gap-3">
+          <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+          <div>
+            <p class="font-bold">Candidatura Enviada com Sucesso!</p>
+            <p class="font-normal text-emerald-800">A empresa recebeu seu perfil e poderá chamá-lo diretamente no WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulação WhatsApp Bot -->
+      <div class="lg:col-span-5 bg-slate-900 rounded-2xl p-4 shadow-xl border border-slate-800">
+        <div class="bg-[#075E54] text-white p-3 rounded-t-xl flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <div>
+              <p class="text-xs font-bold leading-none">Vaga Fácil GO • Atendimento</p>
+              <p class="text-[10px] text-emerald-200">Online 24h</p>
+            </div>
+          </div>
+          <i class="fa-brands fa-whatsapp text-lg text-emerald-300"></i>
+        </div>
+
+        <div class="bg-[#E5DDD5] p-3 rounded-b-xl space-y-2.5 text-xs text-slate-800 min-h-[340px] flex flex-col justify-end">
+          
+          <div class="chat-bubble-received p-2.5 shadow-sm max-w-[85%]">
+            <p>Olá! Bem-vindo ao <strong>Vaga Fácil GO</strong>. 🚀</p>
+            <p class="mt-1 text-[11px] text-slate-600">Encontramos <strong>3 vagas</strong> compatíveis com o seu perfil em Aparecida de Goiânia:</p>
+            <p class="mt-1 font-semibold text-emerald-900">1. Auxiliar de Almoxarifado<br>2. Operador de Caixa<br>3. Repositor de Mercadorias</p>
+            <p class="mt-1 text-[10px] text-slate-400">14:30</p>
+          </div>
+
+          <div class="chat-bubble-sent p-2.5 shadow-sm max-w-[75%] self-end">
+            <p>Quero me candidatar na vaga 1!</p>
+            <p class="mt-1 text-[10px] text-slate-400 text-right">14:31</p>
+          </div>
+
+          <div class="chat-bubble-received p-2.5 shadow-sm max-w-[85%]">
+            <p>Perfeito! 👏 Seus dados já cadastrados foram enviados para a empresa.</p>
+            <p class="mt-1 font-semibold text-emerald-800">Status: Candidatura confirmada ✅</p>
+            <p class="mt-1 text-[10px] text-slate-400">14:31</p>
+          </div>
+
+        </div>
+        <p class="text-[11px] text-slate-400 text-center mt-3">Exemplo de interação conversacional via WhatsApp Cloud API.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- METAS DO PROJETO-PILOTO (6 MESES) -->
+  <section class="py-16 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest">Viabilidade e Métricas de Avaliação</span>
+        <h2 class="text-3xl font-extrabold mt-2">Metas do Projeto-Piloto (6 Meses)</h2>
+        <p class="text-slate-400 mt-2 text-sm">
+          Foco inicial nos três municípios com maior atividade econômica e demanda por postos de trabalho em Goiás.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        
+        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 text-center space-y-2">
+          <p class="text-4xl font-black text-emerald-400">500+</p>
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-300">Trabalhadores</p>
+          <p class="text-xs text-slate-400">Perfis ativos cadastrados e aptos a candidatura rápida.</p>
+        </div>
+
+        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 text-center space-y-2">
+          <p class="text-4xl font-black text-sky-400">30+</p>
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-300">Empresas & PMEs</p>
+          <p class="text-xs text-slate-400">Comércios e pequenas indústrias cadastradas no piloto.</p>
+        </div>
+
+        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 text-center space-y-2">
+          <p class="text-4xl font-black text-amber-400">150+</p>
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-300">Oportunidades</p>
+          <p class="text-xs text-slate-400">Vagas reais publicadas e intermediadas na região.</p>
+        </div>
+
+        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 text-center space-y-2">
+          <p class="text-4xl font-black text-teal-400">1.000+</p>
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-300">Candidaturas</p>
+          <p class="text-xs text-slate-400">Conexões efetivadas entre trabalhadores e empresas.</p>
+        </div>
+
+      </div>
+
+      <div class="mt-12 bg-slate-800 border border-slate-700 rounded-2xl p-6 text-sm text-slate-300 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+            <i class="fa-solid fa-map-pin text-lg"></i>
+          </div>
+          <div>
+            <span class="font-bold text-white">Municípios Atendidos no Piloto:</span>
+            <p class="text-xs text-slate-400">Goiânia (Capital) • Aparecida de Goiânia (Polo Industrial) • Senador Canedo (Polo Logístico/Petroquímico)</p>
+          </div>
+        </div>
+        <span class="text-xs bg-emerald-900/60 border border-emerald-500/40 text-emerald-300 font-semibold px-3 py-1.5 rounded-full">
+          Expansão para Anápolis e Rio Verde na Fase 2
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARQUITETURA TECNOLÓGICA & SEGURANÇA -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest">Engenharia de Software GSTek</span>
+      <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Arquitetura Técnica & Segurança</h2>
+      <p class="text-slate-600 mt-2 text-sm">Estruturada para máxima estabilidade, baixo custo de servidor e total respeito à LGPD.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+      
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+        <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+          <i class="fa-brands fa-python text-lg"></i>
+        </div>
+        <h4 class="font-bold text-slate-900">Python 3.12 + Django 5.x</h4>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Framework robusto, com ORM avançado, proteção nativa contra CSRF/SQL Injection e Django REST Framework para alimentar os canais web e mensageria.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+        <div class="w-10 h-10 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center font-bold">
+          <i class="fa-solid fa-database text-lg"></i>
+        </div>
+        <h4 class="font-bold text-slate-900">PostgreSQL + Índices Textuais</h4>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Banco de dados relacional padrão da indústria, otimizado para consultas rápidas por cidade, bairro e função profissional com índices de alta velocidade.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+        <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+          <i class="fa-solid fa-lock text-lg"></i>
+        </div>
+        <h4 class="font-bold text-slate-900">Conformidade Estrita com LGPD</h4>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Consentimento transparente. Os contatos do candidato só são liberados para a empresa após a manifestação do interesse com finalidade específica.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RODAPÉ EXECUTIVO -->
+  <footer class="bg-white border-t border-slate-200 py-10 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">VF</div>
+        <span class="font-bold text-slate-800">Vaga Fácil GO</span> • GSTek Desenvolvimento de Software
+      </div>
+      <div>
+        Documento técnico e proposta executiva para editais de bolsa e inovação (FAPEG / SEDI / Goiás).
+      </div>
+      <div>
+        © 2026 Vaga Fácil GO. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE SALVAR EM PDF (NO-PRINT) -->
+  <div class="fixed bottom-6 right-6 z-50 no-print">
+    <button onclick="salvarComoPDF()" id="btn-pdf-float" class="flex items-center gap-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm px-4 py-3 rounded-full shadow-2xl hover:scale-105 transition-all border border-rose-500/30">
+      <i class="fa-solid fa-file-pdf text-base"></i>
+      <span class="hidden xs:inline">Salvar em PDF</span>
+    </button>
+  </div>
+
+  <script>
+    function simularCandidatura() {
+      const btn = document.getElementById('btn-candidatar');
+      const box = document.getElementById('box-candidatura');
+      const msg = document.getElementById('msg-sucesso');
+      
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando candidatura...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        box.classList.add('hidden');
+        msg.classList.remove('hidden');
+      }, 700);
+    }
+
+    function salvarComoPDF() {
+      const botoes = document.querySelectorAll('#btn-pdf-nav, #btn-pdf-float, button[onclick="salvarComoPDF()"]');
+      const textosOriginais = [];
+
+      botoes.forEach((b, i) => {
+        textosOriginais[i] = b.innerHTML;
+        b.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-sm"></i> <span>Gerando PDF...</span>';
+        b.disabled = true;
+      });
+
+      // Configuração refinada do html2pdf
+      const opt = {
+        margin: [8, 8, 8, 8],
+        filename: 'Vaga_Facil_GO_Proposta_Projeto.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2, 
+          useCORS: true, 
+          logging: false,
+          scrollY: 0
+        },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+
+      // Executa o html2pdf capturando o corpo da página
+      if (typeof html2pdf !== 'undefined') {
+        html2pdf().set(opt).from(document.body).save().then(() => {
+          botoes.forEach((b, i) => {
+            b.innerHTML = textosOriginais[i];
+            b.disabled = false;
+          });
+        }).catch(err => {
+          console.warn('Fallback para janela de impressão nativa:', err);
+          window.print();
+          botoes.forEach((b, i) => {
+            b.innerHTML = textosOriginais[i];
+            b.disabled = false;
+          });
+        });
+      } else {
+        // Fallback caso a CDN não carregue
+        window.print();
+        botoes.forEach((b, i) => {
+          b.innerHTML = textosOriginais[i];
+          b.disabled = false;
+        });
+      }
+    }
+  </script>
 </body>
-
 </html>
+
