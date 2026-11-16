@@ -1,648 +1,1612 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vaga Fácil GO — Proposta de Projeto & Apresentação da Plataforma</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- html2pdf.js CDN para download direto em PDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-  <!-- Google Fonts Inter -->
+  <title>Dom Lux ERP - Apresentação & Demonstração Comercial</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-          },
-          colors: {
-            goias: {
-              green: '#008744',
-              greenDark: '#006331',
-              blue: '#0057b8',
-              gold: '#fbb900',
-              light: '#f0fdf4'
-            }
-          }
-        }
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --primary-light: #EEF2FF;
+      --primary-dark: #3730A3;
+      --primary-gradient: linear-gradient(135deg, #4F46E5 0%, #6366F1 50%, #818CF8 100%);
+      --secondary: #0F172A;
+      --success: #10B981;
+      --success-light: #ECFDF5;
+      --warning: #F59E0B;
+      --warning-light: #FFFBEB;
+      --danger: #EF4444;
+      --danger-light: #FEF2F2;
+      --bg-body: #F8FAFC;
+      --surface: #FFFFFF;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --card-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+      --card-hover: 0 20px 30px -10px rgba(79, 70, 229, 0.15);
+
+      --ml: #F59E0B;
+      --shopee: #EA580C;
+      --nuvem: #2563EB;
+      --wpp: #16A34A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Top Navigation Header */
+    header.site-header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      background: var(--primary-gradient);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 8px 16px rgba(79, 70, 229, 0.25);
+    }
+
+    .brand-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--secondary);
+      letter-spacing: -0.5px;
+    }
+
+    .brand-title span {
+      color: var(--primary);
+    }
+
+    .badge-system {
+      background: #E0E7FF;
+      color: var(--primary-dark);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      margin-left: 0.5rem;
+      border: 1px solid rgba(79, 70, 229, 0.2);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .header-nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .header-nav a:hover {
+      color: var(--primary);
+    }
+
+    .header-cta {
+      background: var(--primary-gradient);
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 1.6rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .header-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.45);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: radial-gradient(circle at top center, rgba(99, 102, 241, 0.12) 0%, transparent 70%), #FFFFFF;
+      padding: 4.5rem 2rem 3.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #EEF2FF;
+      border: 1px solid #C7D2FE;
+      color: #4338CA;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.4rem 1.1rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: #0F172A;
+      line-height: 1.15;
+      letter-spacing: -1.2px;
+      max-width: 950px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero h1 span.highlight {
+      background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p.lead {
+      font-size: 1.25rem;
+      color: #475569;
+      max-width: 780px;
+      margin: 0 auto 2.5rem;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .btn-primary-large {
+      background: var(--primary-gradient);
+      color: white;
+      text-decoration: none;
+      padding: 1.1rem 2.2rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.35);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn-primary-large:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(79, 70, 229, 0.45);
+    }
+
+    .btn-secondary-large {
+      background: #FFFFFF;
+      color: var(--secondary);
+      text-decoration: none;
+      padding: 1.1rem 2.2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: 2px solid #E2E8F0;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn-secondary-large:hover {
+      background: #F8FAFC;
+      border-color: #CBD5E1;
+      transform: translateY(-2px);
+    }
+
+    /* Integration Badges */
+    .integrations-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 1px dashed #E2E8F0;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .integrations-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .channel-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    }
+
+    .channel-chip.ml {
+      border-color: #FCD34D;
+      color: #92400E;
+      background: #FEF3C7;
+    }
+
+    .channel-chip.shopee {
+      border-color: #FDBA74;
+      color: #9A3412;
+      background: #FFEDD5;
+    }
+
+    .channel-chip.nuvem {
+      border-color: #93C5FD;
+      color: #1E40AF;
+      background: #EFF6FF;
+    }
+
+    .channel-chip.wpp {
+      border-color: #86EFAC;
+      color: #166534;
+      background: #F0FDF4;
+    }
+
+    /* Stats Grid */
+    .stats-banner {
+      max-width: 1240px;
+      margin: -2rem auto 4rem;
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 2.2rem 3rem;
+      box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stat-item {
+      text-align: center;
+      border-right: 1px solid #F1F5F9;
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--secondary);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-number.gradient {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Section Container */
+    .section-container {
+      max-width: 1240px;
+      margin: 0 auto 5rem;
+      padding: 0 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-tag {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.6rem;
+      display: inline-block;
+    }
+
+    .section-header h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--secondary);
+      letter-spacing: -0.8px;
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Pillars of Dom Lux Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2.2rem;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--card-hover);
+      border-color: #C7D2FE;
+    }
+
+    .feature-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-icon.blue {
+      background: #EEF2FF;
+      color: #4F46E5;
+    }
+
+    .feature-icon.green {
+      background: #ECFDF5;
+      color: #10B981;
+    }
+
+    .feature-icon.amber {
+      background: #FFFBEB;
+      color: #F59E0B;
+    }
+
+    .feature-icon.purple {
+      background: #FAF5FF;
+      color: #9333EA;
+    }
+
+    .feature-icon.rose {
+      background: #FFF1F2;
+      color: #F43F5E;
+    }
+
+    .feature-icon.cyan {
+      background: #ECFEFF;
+      color: #06B6D4;
+    }
+
+    .feature-card h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 0.8rem;
+    }
+
+    .feature-card p {
+      color: #64748B;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .feature-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .feature-pill {
+      font-size: 0.76rem;
+      font-weight: 700;
+      background: #F1F5F9;
+      color: #475569;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    /* Deep Dive: DRE em Tempo Real (O grande diferencial) */
+    .dre-deep-dive {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      border-radius: 24px;
+      padding: 3.5rem;
+      color: white;
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+      margin-bottom: 5rem;
+      border: 1px solid #334155;
+    }
+
+    .dre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .dre-text h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+    }
+
+    .dre-text h2 span {
+      color: #38BDF8;
+    }
+
+    .dre-text p {
+      color: #94A3B8;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      line-height: 1.65;
+    }
+
+    .dre-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .dre-step {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+    }
+
+    .dre-step-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38BDF8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .dre-step-text strong {
+      display: block;
+      color: #F8FAFC;
+      font-size: 0.95rem;
+    }
+
+    .dre-step-text span {
+      font-size: 0.85rem;
+      color: #94A3B8;
+    }
+
+    .dre-card-visual {
+      background: #FFFFFF;
+      color: #0F172A;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .dre-visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #F1F5F9;
+      padding-bottom: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .dre-visual-badge {
+      background: #FEF3C7;
+      color: #92400E;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    .dre-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.65rem 0;
+      font-size: 0.95rem;
+      border-bottom: 1px dashed #E2E8F0;
+    }
+
+    .dre-line.deduction {
+      color: #EF4444;
+    }
+
+    .dre-line.total {
+      border-top: 2px solid #0F172A;
+      border-bottom: none;
+      padding-top: 1rem;
+      margin-top: 0.5rem;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #10B981;
+    }
+
+    /* Comparison: Antes vs Depois */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .comparison-card {
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: var(--card-shadow);
+    }
+
+    .comparison-card.before {
+      background: #FEF2F2;
+      border: 2px solid #FCA5A5;
+    }
+
+    .comparison-card.after {
+      background: #F0FDF4;
+      border: 2px solid #86EFAC;
+    }
+
+    .comparison-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .comparison-card.before .comparison-title {
+      color: #991B1B;
+    }
+
+    .comparison-card.after .comparison-title {
+      color: #166534;
+    }
+
+    .comparison-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .comparison-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .comparison-card.before .comparison-list li {
+      color: #7F1D1D;
+    }
+
+    .comparison-card.after .comparison-list li {
+      color: #14532D;
+    }
+
+    .comparison-bullet {
+      font-size: 1.2rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-top: 0.15rem;
+    }
+
+    /* Live Dashboard Interactive Preview */
+    .dashboard-preview-section {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 5rem;
+    }
+
+    .preview-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .preview-pill {
+      background: #EEF2FF;
+      color: #4F46E5;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    /* KPI Cards in Preview */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .kpi-card {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: all 0.2s;
+    }
+
+    .kpi-card:hover {
+      border-color: #C7D2FE;
+      transform: translateY(-2px);
+    }
+
+    .kpi-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .kpi-value {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--secondary);
+    }
+
+    /* Charts Preview Grid */
+    .charts-row-1 {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .charts-row-2 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .chart-box {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+
+    .chart-box-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chart-box-canvas {
+      position: relative;
+      height: 240px;
+      width: 100%;
+    }
+
+    /* De/Para & Kit Engine Showcase */
+    .kit-engine-box {
+      background: linear-gradient(135deg, #EEF2FF 0%, #F5F3FF 100%);
+      border: 2px solid #C7D2FE;
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .kit-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #FFFFFF;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      margin-top: 1.5rem;
+    }
+
+    .kit-table th {
+      background: #F8FAFC;
+      padding: 0.9rem 1.2rem;
+      font-size: 0.82rem;
+      text-align: left;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .kit-table td {
+      padding: 1rem 1.2rem;
+      font-size: 0.92rem;
+      border-bottom: 1px solid #F1F5F9;
+      color: var(--secondary);
+    }
+
+    .multiplier-badge {
+      background: #E0E7FF;
+      color: #3730A3;
+      font-weight: 800;
+      font-size: 0.78rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    /* CTA Footer */
+    .cta-footer {
+      background: #0F172A;
+      color: white;
+      padding: 5rem 2rem;
+      text-align: center;
+      border-top: 1px solid #1E293B;
+    }
+
+    .cta-footer h2 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      letter-spacing: -0.8px;
+    }
+
+    .cta-footer p {
+      color: #94A3B8;
+      font-size: 1.2rem;
+      max-width: 650px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cta-btn-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+
+      .features-grid,
+      .charts-row-2,
+      .kpi-grid,
+      .stats-banner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dre-grid,
+      .charts-row-1,
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
       }
     }
-  </script>
 
-  <style>
-    @media print {
-      .no-print { display: none !important; }
-      body { background-color: #fff !important; color: #111 !important; font-size: 11pt; }
-      .page-break { page-break-before: always; }
-      .shadow-xl, .shadow-2xl, .shadow-md { box-shadow: none !important; border: 1px solid #e5e7eb; }
-    }
-    .chat-bubble-received {
-      background-color: #ffffff;
-      border-radius: 0 16px 16px 16px;
-    }
-    .chat-bubble-sent {
-      background-color: #dcf8c6;
-      border-radius: 16px 0 16px 16px;
+    @media (max-width: 640px) {
+
+      .features-grid,
+      .charts-row-2,
+      .kpi-grid,
+      .stats-banner {
+        grid-template-columns: 1fr;
+      }
+
+      header.site-header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .hero {
+        padding: 3rem 1rem 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-emerald-500 selection:text-white">
 
-  <!-- BARRA DE TOPO / AÇÕES -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 no-print">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-emerald-500/20">
-          <i class="fa-solid fa-briefcase"></i>
-        </div>
-        <div>
-          <span class="font-extrabold text-slate-900 tracking-tight text-lg">Vaga Fácil <span class="text-emerald-600">GO</span></span>
-          <span class="hidden sm:inline-block ml-2 text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded-full">Inovação & Inclusão Produtiva</span>
-        </div>
+<body>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="brand-container">
+      <div class="brand-logo">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+        </svg>
       </div>
-      <div class="flex items-center gap-2 sm:gap-3">
-        <button onclick="salvarComoPDF()" id="btn-pdf-nav" class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-lg shadow-sm shadow-rose-600/30 transition-all">
-          <i class="fa-solid fa-file-pdf text-sm"></i>
-          <span>Salvar em PDF</span>
-        </button>
-        <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors border border-slate-300">
-          <i class="fa-solid fa-print"></i>
-          <span class="hidden sm:inline">Imprimir</span>
-        </button>
-        <a href="#simulador" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-sm shadow-emerald-600/30 transition-all">
-          <i class="fa-solid fa-play"></i>
-          <span class="hidden sm:inline">Ver Simulador</span>
-        </a>
+      <div class="brand-title">
+        DomLux<span>ERP</span>
+        <span class="badge-system">Indústria & E-commerce</span>
       </div>
     </div>
+
+    <nav class="header-nav">
+      <a href="#solucoes">Soluções</a>
+      <a href="#dre">DRE em Tempo Real</a>
+      <a href="#kits">Motor de Kits</a>
+      <a href="#preview">Painel BI Ao Vivo</a>
+      <a href="#comparativo">Comparativo</a>
+    </nav>
+
+    <a href="#preview" class="header-cta">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+        </path>
+      </svg>
+      Ver Demonstração
+    </a>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="relative overflow-hidden pt-12 pb-16 bg-gradient-to-b from-white via-emerald-50/40 to-slate-50 border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-300/50 text-emerald-900 text-xs font-bold uppercase tracking-wider">
-            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-            Projeto de Inovação Social e Tecnológica • Goiás
-          </div>
-          
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
-            Menos burocracia. <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-sky-600">
-              Mais oportunidades reais.
-            </span>
-          </h1>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-pill">
+      🚀 O Único ERP Especialista em Fábricas e E-commerce Multicanal
+    </div>
+    <h1>
+      Controle Estoque Físico, <br>
+      <span class="highlight">Elimine Prejuízos Ocultos</span> e Descubra o Lucro Líquido Real.
+    </h1>
+    <p class="lead">
+      Chega de se iludir com faturamento bruto. O <strong>Dom Lux ERP</strong> conecta seus marketplaces (Mercado Livre,
+      Shopee, Nuvemshop e WhatsApp), decompõe kits em produtos unitários de fábrica e apura a DRE exata de cada pedido
+      em tempo real.
+    </p>
 
-          <p class="text-lg text-slate-600 leading-relaxed max-w-2xl">
-            Uma central pública-privada inteligente que conecta trabalhadores e empregadores goianos. 
-            Eliminamos os cadastros de 40 minutos e as barreiras digitais: o cidadão se cadastra uma única vez e se candidata com <strong>1 clique</strong> ou direto pelo <strong>WhatsApp</strong>.
-          </p>
+    <div class="hero-actions">
+      <a href="#preview" class="btn-primary-large">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+          </path>
+        </svg>
+        Explorar Dashboard BI Interativo
+      </a>
+      <a href="#dre" class="btn-secondary-large">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+          </path>
+        </svg>
+        Como funciona a DRE Pedido a Pedido
+      </a>
+    </div>
 
-          <!-- Badges de Destaque -->
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-            <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3">
-              <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
-                <i class="fa-solid fa-mouse-pointer"></i>
-              </div>
-              <div>
-                <p class="text-xs text-slate-500 font-medium">Candidatura</p>
-                <p class="text-sm font-bold text-slate-800">Em 1 Clique</p>
-              </div>
-            </div>
-
-            <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3">
-              <div class="w-9 h-9 rounded-lg bg-green-50 text-green-600 flex items-center justify-center font-bold">
-                <i class="fa-brands fa-whatsapp text-lg"></i>
-              </div>
-              <div>
-                <p class="text-xs text-slate-500 font-medium">Acesso Popular</p>
-                <p class="text-sm font-bold text-slate-800">100% WhatsApp</p>
-              </div>
-            </div>
-
-            <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 col-span-2 sm:col-span-1">
-              <div class="w-9 h-9 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center font-bold">
-                <i class="fa-solid fa-map-location-dot"></i>
-              </div>
-              <div>
-                <p class="text-xs text-slate-500 font-medium">Território Piloto</p>
-                <p class="text-sm font-bold text-slate-800">Eixo Metropolitano</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Botões de Ação Imediata -->
-          <div class="flex flex-wrap items-center gap-3 pt-3 no-print">
-            <button onclick="salvarComoPDF()" class="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm shadow-md shadow-rose-600/25 transition-all transform hover:-translate-y-0.5">
-              <i class="fa-solid fa-file-pdf text-base"></i>
-              <span>Salvar Proposta em PDF</span>
-            </button>
-            <a href="#simulador" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-600/25 transition-all transform hover:-translate-y-0.5">
-              <i class="fa-solid fa-play"></i>
-              <span>Testar Simulador</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Card Resumo Executivo -->
-        <div class="lg:col-span-5">
-          <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xl relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl"></div>
-            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Ficha Técnica do Projeto</span>
-              <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-full">GSTek DEV</span>
-            </div>
-
-            <div class="mt-4 space-y-4 text-sm">
-              <div class="flex justify-between py-2 border-b border-slate-50">
-                <span class="text-slate-500 font-medium">Nome do Projeto:</span>
-                <span class="font-bold text-slate-900">Vaga Fácil GO</span>
-              </div>
-              <div class="flex justify-between py-2 border-b border-slate-50">
-                <span class="text-slate-500 font-medium">Área Temática:</span>
-                <span class="font-semibold text-slate-800">Inovação Social & Inclusão Produtiva</span>
-              </div>
-              <div class="flex justify-between py-2 border-b border-slate-50">
-                <span class="text-slate-500 font-medium">Público-Alvo:</span>
-                <span class="font-semibold text-slate-800 text-right">Trabalhadores, Jovens & PMEs</span>
-              </div>
-              <div class="flex justify-between py-2 border-b border-slate-50">
-                <span class="text-slate-500 font-medium">Municípios Piloto:</span>
-                <span class="font-semibold text-emerald-700">Goiânia, Ap. de Goiânia e Sen. Canedo</span>
-              </div>
-              <div class="flex justify-between py-2 border-b border-slate-50">
-                <span class="text-slate-500 font-medium">Stack Tecnológica:</span>
-                <span class="font-semibold text-slate-800">Python/Django • Postgres • WhatsApp API</span>
-              </div>
-              <div class="flex justify-between py-2">
-                <span class="text-slate-500 font-medium">Custo ao Cidadão:</span>
-                <span class="font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">100% Gratuito</span>
-              </div>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-slate-100 text-center">
-              <p class="text-xs text-slate-400">Desenvolvido com foco nas diretrizes de fomento de Goiás (FAPEG / SEDI).</p>
-            </div>
-          </div>
-        </div>
-
+    <div class="integrations-bar">
+      <span class="integrations-label">Integrações Oficiais Automáticas 24/7:</span>
+      <div class="channel-chip ml">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        Mercado Livre (OAuth 2.0 + Full)
+      </div>
+      <div class="channel-chip shopee">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+        </svg>
+        Shopee OpenAPI v2
+      </div>
+      <div class="channel-chip nuvem">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"></path>
+        </svg>
+        NuvemShop Própria
+      </div>
+      <div class="channel-chip wpp">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M20.5 3.5A11.9 11.9 0 0012 0C5.4 0 0 5.4 0 12c0 2.1.5 4.1 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.6 5.8 1.6 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.5z">
+          </path>
+        </svg>
+        Vendas Diretas / Balcão B2B
       </div>
     </div>
   </section>
 
-  <!-- O PROBLEMA VS A SOLUÇÃO -->
-  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest">Diagnóstico Real de Mercado</span>
-      <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Por que as pessoas desistem de procurar emprego na internet?</h2>
-      <p class="text-slate-600 mt-3 text-sm sm:text-base">
-        A grande barreira para empregar quem mais precisa não é a falta de vagas, mas o excesso de atrito e a complexidade das plataformas existentes.
-      </p>
+  <!-- Key Stats Banner -->
+  <div class="stats-banner">
+    <div class="stat-item">
+      <div class="stat-number gradient">100%</div>
+      <div class="stat-label">Pedidos com DRE e Lucro Real Apurados</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">0%</div>
+      <div class="stat-label">Furos de Estoque em Anúncios de Kits</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number gradient">+38%</div>
+      <div class="stat-label">Margem Líquida Recuperada com Gestão de Fretes</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">10 min</div>
+      <div class="stat-label">Sincronização 24/7 sem Ação Humana</div>
+    </div>
+  </div>
+
+  <!-- Pillars / Solutions Grid -->
+  <section class="section-container" id="solucoes">
+    <div class="section-header">
+      <span class="section-tag">Funcionalidades Exclusivas</span>
+      <h2>Construído para a Realidade da Indústria</h2>
+      <p>Os ERPs tradicionais foram feitos para revendedores simples. O Dom Lux foi desenhado especificamente para
+        indústrias que produzem itens soltos e vendem dezenas de combinações em marketplaces.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <!-- Cenário Atual -->
-      <div class="bg-rose-50/60 border border-rose-200 rounded-2xl p-6 sm:p-8 space-y-4">
-        <div class="flex items-center gap-3 text-rose-700 font-bold text-lg">
-          <div class="w-10 h-10 rounded-xl bg-rose-100 flex items-center justify-center">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-          </div>
-          <h3>Como Funciona Hoje (Barreiras Reais)</h3>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon blue">⚡</div>
+        <h3>Motor Inteligente de Kits (De/Para)</h3>
+        <p>Vendeu "Kit com 30 Taças de Gin" no Mercado Livre? O sistema dá baixa de 30 unidades exatas do produto físico
+          <strong>[GIN-TR]</strong> e soma 1 caixa de papelão no custo de embalagem.</p>
+        <div class="feature-tag-list">
+          <span class="feature-pill">Multiplicador Automático</span>
+          <span class="feature-pill">Baixa Unitária</span>
+          <span class="feature-pill">Custo de Caixa</span>
         </div>
-        <ul class="space-y-3.5 text-sm text-slate-700">
-          <li class="flex items-start gap-3">
-            <i class="fa-solid fa-xmark text-rose-500 mt-1 font-bold"></i>
-            <span><strong>Vagas pulverizadas e inseguras:</strong> Links soltos em stories de Instagram e grupos desorganizados de WhatsApp sem moderação.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <i class="fa-solid fa-xmark text-rose-500 mt-1 font-bold"></i>
-            <span><strong>Cadastros intermináveis:</strong> Formulários com 5 páginas, testes desnecessários de perfil e obrigação de subir PDFs em computadores.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <i class="fa-solid fa-xmark text-rose-500 mt-1 font-bold"></i>
-            <span><strong>PMEs abandonadas:</strong> Padarias, oficinas e lojas de bairro não pagam R$ 600/mês para postar vaga em plataformas corporativas.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <i class="fa-solid fa-xmark text-rose-500 mt-1 font-bold"></i>
-            <span><strong>Exclusão digital:</strong> Quem não tem computador ou não domina ferramentas complexas fica de fora do mercado formal.</span>
-          </li>
-        </ul>
       </div>
 
-      <!-- Modelo Vaga Fácil GO -->
-      <div class="bg-emerald-50/60 border border-emerald-200 rounded-2xl p-6 sm:p-8 space-y-4">
-        <div class="flex items-center gap-3 text-emerald-800 font-bold text-lg">
-          <div class="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center">
-            <i class="fa-solid fa-check"></i>
-          </div>
-          <h3>A Proposta Vaga Fácil GO</h3>
+      <div class="feature-card">
+        <div class="feature-icon green">📊</div>
+        <h3>DRE Pedido a Pedido em Tempo Real</h3>
+        <p>Esqueça surpresas no fim do mês. A cada venda aprovada, o Dom Lux calcula: Preço de Venda (-) Taxa do Canal
+          (-) Frete Cobrado do Vendedor (-) Impostos (-) CMV (-) Embalagem = <strong>Lucro Líquido no Bolso</strong>.
+        </p>
+        <div class="feature-tag-list">
+          <span class="feature-pill">Margem Real %</span>
+          <span class="feature-pill">Taxa Efetiva de Canal</span>
+          <span class="feature-pill">Frete Seller Real</span>
         </div>
-        <ul class="space-y-3.5 text-sm text-slate-700">
-          <li class="flex items-start gap-3">
-            <i class="fa-solid fa-circle-check text-emerald-600 mt-1 font-bold"></i>
-            <span><strong>Perfil único em 2 minutos:</strong> Nome, telefone, bairro, escolaridade e resumo prático. Preenche uma vez e usa sempre.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <i class="fa-solid fa-circle-check text-emerald-600 mt-1 font-bold"></i>
-            <span><strong>Candidatura em 1 Clique:</strong> Viu a vaga no celular? Um toque e o perfil é encaminhado com confirmação instantânea.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <i class="fa-solid fa-circle-check text-emerald-600 mt-1 font-bold"></i>
-            <span><strong>Interação via WhatsApp:</strong> Alertas de vagas compatíveis no bairro e possibilidade de responder perguntas direto pelo chat.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <i class="fa-solid fa-circle-check text-emerald-600 mt-1 font-bold"></i>
-            <span><strong>Foco no Comércio e PMEs:</strong> Publicação gratuita e rápida para quem movimenta a economia dos bairros goianos.</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- OS 3 AMBIENTES DO SISTEMA -->
-  <section class="py-16 bg-white border-y border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest">Estrutura Operacional</span>
-        <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Como o Sistema se Organiza</h2>
-        <p class="text-slate-600 mt-2 text-sm">Três áreas integradas desenhadas para alta usabilidade e baixo atrito.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- Módulo 1 -->
-        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-emerald-300 transition-all flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xl mb-5 shadow-md shadow-emerald-600/20">
-              <i class="fa-solid fa-user-check"></i>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900">1. Área do Trabalhador</h3>
-            <p class="text-xs font-semibold text-emerald-700 mt-1 uppercase tracking-wide">Foco: Rapidez e Zero Frustração</p>
-            <ul class="mt-4 space-y-2.5 text-xs text-slate-600">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Cadastro simplificado em página única</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Busca filtrada por município e bairro</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Botão "Quero Me Candidatar" em 1 clique</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Acompanhamento do status da candidatura</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Alertas de vagas por WhatsApp</li>
-            </ul>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-200/80">
-            <span class="text-[11px] font-medium text-slate-400">Totalmente responsivo para qualquer smartphone</span>
-          </div>
+      <div class="feature-card">
+        <div class="feature-icon amber">📦</div>
+        <h3>Gestão de Envios Full (Fulfillment)</h3>
+        <p>Controle preciso do que está no galpão físico central versus o que já foi enviado para os galpões Full do
+          Mercado Livre. Saiba exatamente a hora de abastecer o Full para nunca pausar anúncios.</p>
+        <div class="feature-tag-list">
+          <span class="feature-pill">Saldo no Galpão</span>
+          <span class="feature-pill">Saldo no Full</span>
+          <span class="feature-pill">Sugestão de Envio 30d</span>
         </div>
+      </div>
 
-        <!-- Módulo 2 -->
-        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-blue-300 transition-all flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xl mb-5 shadow-md shadow-blue-600/20">
-              <i class="fa-solid fa-building"></i>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900">2. Área das Empresas</h3>
-            <p class="text-xs font-semibold text-blue-700 mt-1 uppercase tracking-wide">Foco: Facilidade para PMEs e RHs</p>
-            <ul class="mt-4 space-y-2.5 text-xs text-slate-600">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> Publicação de vagas em menos de 3 minutos</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> Definição de até 3 critérios de corte objetivos</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> Painel limpo com lista de candidatos aptos</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> Mudança de status: Em análise / Selecionado</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> Acesso direto ao WhatsApp do candidato apto</li>
-            </ul>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-200/80">
-            <span class="text-[11px] font-medium text-slate-400">Sem custos abusivos para comerciantes locais</span>
-          </div>
+      <div class="feature-card">
+        <div class="feature-icon purple">📑</div>
+        <h3>Importador Universal de Planilhas</h3>
+        <p>Suba planilhas do Mercado Livre, Shopee ou Nuvemshop. Nossa IA de Regex detecta automaticamente "40x", "30
+          unidades", "12 taças" e amarra o anúncio ao produto de fábrica em segundos.</p>
+        <div class="feature-tag-list">
+          <span class="feature-pill">Auto-vínculo de Anúncios</span>
+          <span class="feature-pill">Zero Digitação Manual</span>
+          <span class="feature-pill">Suporte .XLSX / .CSV</span>
         </div>
+      </div>
 
-        <!-- Módulo 3 -->
-        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-amber-300 transition-all flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-xl mb-5 shadow-md shadow-amber-600/20">
-              <i class="fa-solid fa-chart-line"></i>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900">3. Área Administrativa / Gov</h3>
-            <p class="text-xs font-semibold text-amber-700 mt-1 uppercase tracking-wide">Foco: Gestão, Segurança e Métricas</p>
-            <ul class="mt-4 space-y-2.5 text-xs text-slate-600">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> Moderação ativa e combate a vagas falsas/golpes</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> Curadoria de vagas parceiras (SINE / Entidades)</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> Indicadores de empregabilidade por cidade</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> Conformidade contínua com a LGPD</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> Relatórios de impacto social para prestação de contas</li>
-            </ul>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-200/80">
-            <span class="text-[11px] font-medium text-slate-400">Ideal para prestação de contas à FAPEG / Governo</span>
-          </div>
+      <div class="feature-card">
+        <div class="feature-icon rose">🔄</div>
+        <h3>Robôs de Sincronização 24/7 (Celery Beat)</h3>
+        <p>Os robôs de segundo plano monitoram e sincronizam novos pedidos, faturamentos e baixas de estoque a cada 10
+          minutos, mesmo aos sábados, domingos e madrugadas.</p>
+        <div class="feature-tag-list">
+          <span class="feature-pill">Auto-renovação de Tokens</span>
+          <span class="feature-pill">Tratamento Anti-Quedas</span>
+          <span class="feature-pill">Zero Clique Manual</span>
         </div>
+      </div>
 
+      <div class="feature-card">
+        <div class="feature-icon cyan">🔒</div>
+        <h3>Segurança Máxima & Blindagem</h3>
+        <p>Credenciais de API e dados financeiros criptografados em repouso no banco de dados com algoritmo Fernet
+          (AES-128-CBC). Controle rigoroso de perfis: Diretoria, Estoque e Operacional.</p>
+        <div class="feature-tag-list">
+          <span class="feature-pill">Criptografia Militar</span>
+          <span class="feature-pill">Logs de Auditoria</span>
+          <span class="feature-pill">Permissões por Cargo</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SIMULADOR INTERATIVO (DEMO VISUAL) -->
-  <section id="simulador" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest">Experiência do Usuário</span>
-      <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Como Funciona na Prática?</h2>
-      <p class="text-slate-600 mt-2 text-sm">Simulação das duas formas mais rápidas de conexão que a plataforma entrega.</p>
-    </div>
+  <!-- Deep Dive: DRE Section -->
+  <section class="section-container" id="dre">
+    <div class="dre-deep-dive">
+      <div class="dre-grid">
+        <div class="dre-text">
+          <span class="section-tag" style="color: #38BDF8;">Inteligência Financeira Superior</span>
+          <h2>Você realmente sabe quanto sobra de cada <span>venda de Kit?</span></h2>
+          <p>Muitas fábricas e e-commerces quebram vendendo muito porque ignoram o efeito cascata de <strong>taxas de
+              marketplace + frete debitado do vendedor + embalagem</strong>. O Dom Lux abre a caixa preta de cada
+            pedido.</p>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      
-      <!-- Simulação Web: Card de Vaga com 1 Clique -->
-      <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-lg p-6 space-y-6">
-        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
-              <i class="fa-solid fa-store"></i>
+          <div class="dre-steps">
+            <div class="dre-step">
+              <div class="dre-step-icon">1</div>
+              <div class="dre-step-text">
+                <strong>Captura do Frete Real do Seller</strong>
+                <span>Acessa a API profunda do ML e captura o desconto exato do envio cobrado do lojista.</span>
+              </div>
             </div>
+            <div class="dre-step">
+              <div class="dre-step-icon">2</div>
+              <div class="dre-step-text">
+                <strong>Cálculo Real de CMV + Embalagem</strong>
+                <span>Desconta o custo de produção de cada peça física multiplicada pelo tamanho do kit.</span>
+              </div>
+            </div>
+            <div class="dre-step">
+              <div class="dre-step-icon">3</div>
+              <div class="dre-step-text">
+                <strong>Lucro Líquido Real e Margem % Apurada</strong>
+                <span>Alerta instantâneo caso algum anúncio esteja rodando com margem negativa ou abaixo da meta.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DRE Visual Simulation -->
+        <div class="dre-card-visual">
+          <div class="dre-visual-header">
             <div>
-              <h4 class="font-bold text-slate-900 text-base">Atendente de Balcão e Caixa</h4>
-              <p class="text-xs text-slate-500">Supermercado & Panificadora Central • Goiânia (Setor Bueno)</p>
+              <div style="font-size: 0.8rem; color: #64748B; font-weight: 600;">SIMULAÇÃO DE PEDIDO REAL</div>
+              <div style="font-weight: 800; font-size: 1.15rem;">Kit 30 Taças de Gin 580ml</div>
             </div>
+            <span class="dre-visual-badge">Mercado Livre</span>
           </div>
-          <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full">CLT</span>
+
+          <div class="dre-line">
+            <span>(+) Valor Bruto da Venda</span>
+            <strong style="color: #0F172A;">R$ 165,30</strong>
+          </div>
+          <div class="dre-line deduction">
+            <span>(-) Comissão Mercado Livre (18%)</span>
+            <strong>- R$ 29,75</strong>
+          </div>
+          <div class="dre-line deduction">
+            <span>(-) Frete Real Debitado do Seller</span>
+            <strong>- R$ 24,90</strong>
+          </div>
+          <div class="dre-line deduction">
+            <span>(-) Impostos Fiscais Estimados (6%)</span>
+            <strong>- R$ 9,92</strong>
+          </div>
+          <div class="dre-line deduction">
+            <span>(-) Custo Fabril das 30 Peças (CMV R$ 1,10/un)</span>
+            <strong>- R$ 33,00</strong>
+          </div>
+          <div class="dre-line deduction">
+            <span>(-) Caixa de Papelão e Embalagem</span>
+            <strong>- R$ 1,50</strong>
+          </div>
+
+          <div class="dre-line total">
+            <div>
+              <div>(=) Lucro Líquido Real</div>
+              <div style="font-size: 0.8rem; font-weight: 600; color: #047857;">Margem Líquida Limpa no Bolso: 39,8%
+              </div>
+            </div>
+            <span style="font-size: 1.4rem;">+ R$ 66,23</span>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="space-y-3 text-sm text-slate-600">
-          <p><strong>Descrição:</strong> Atendimento ao cliente, registro de mercadorias no caixa, organização da frente de loja e apoio na reposição de produtos.</p>
-          <div class="flex flex-wrap gap-2 pt-1 text-xs">
-            <span class="bg-slate-100 px-3 py-1 rounded-md text-slate-700 font-medium"><i class="fa-solid fa-money-bill-wave text-emerald-600 mr-1"></i> R$ 1.620,00 + Benefícios</span>
-            <span class="bg-slate-100 px-3 py-1 rounded-md text-slate-700 font-medium"><i class="fa-solid fa-clock text-blue-600 mr-1"></i> Escala 6x1 (Tarde/Noite)</span>
-            <span class="bg-slate-100 px-3 py-1 rounded-md text-slate-700 font-medium"><i class="fa-solid fa-graduation-cap text-purple-600 mr-1"></i> Ensino Médio</span>
-          </div>
+  <!-- Motor de Kits: O Coração da Operação -->
+  <section class="section-container" id="kits">
+    <div class="kit-engine-box">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+        <span class="section-tag">A Revolução do Estoque</span>
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: #1E1B4B; margin-bottom: 0.8rem;">Como o Motor de Kits Dom
+          Lux Funciona</h2>
+        <p style="color: #4338CA; font-size: 1.05rem;">
+          Sua fábrica não produz "Kits". Sua fábrica produz copos, taças e canecas unitárias. O Dom Lux conecta o
+          catálogo virtual dos marketplaces ao chão de fábrica sem duplicar produtos!
+        </p>
+      </div>
+
+      <table class="kit-table">
+        <thead>
+          <tr>
+            <th>Canal & Anúncio Marketplace</th>
+            <th>Produto Físico Pai no Galpão</th>
+            <th>Multiplicador</th>
+            <th>Custo Embalagem</th>
+            <th>Ação no Estoque do Galpão</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>[Mercado Livre]</strong> Kit 10 Taças Gin Transparente</td>
+            <td><span style="color: #4F46E5; font-weight: 700;">[GIN-TR]</span> Taça Gin 580ml</td>
+            <td><span class="multiplier-badge">10 peças</span></td>
+            <td>R$ 1,50</td>
+            <td><strong style="color: #DC2626;">-10 un</strong> em GIN-TR</td>
+          </tr>
+          <tr>
+            <td><strong>[Shopee]</strong> Kit 30 Taças Gin Transparente</td>
+            <td><span style="color: #4F46E5; font-weight: 700;">[GIN-TR]</span> Taça Gin 580ml</td>
+            <td><span class="multiplier-badge">30 peças</span></td>
+            <td>R$ 1,50</td>
+            <td><strong style="color: #DC2626;">-30 un</strong> em GIN-TR</td>
+          </tr>
+          <tr>
+            <td><strong>[NuvemShop]</strong> Kit 50 Canecas de Chopp 300ml</td>
+            <td><span style="color: #4F46E5; font-weight: 700;">[CAN-300-TR]</span> Caneca Chopp 300ml</td>
+            <td><span class="multiplier-badge">50 peças</span></td>
+            <td>R$ 2,00</td>
+            <td><strong style="color: #DC2626;">-50 un</strong> em CAN-300-TR</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div
+        style="background: white; border-radius: 12px; padding: 1.25rem; margin-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border: 1px solid #C7D2FE;">
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <span style="font-size: 1.5rem;">💡</span>
+          <span style="font-size: 0.95rem; color: #3730A3; font-weight: 600;">
+            <strong>Saldo Sincronizado:</strong> Se você tem 1.000 taças no galpão, o Dom Lux calcula automaticamente
+            que você tem 100 kits de 10x ou 33 kits de 30x para anunciar sem risco de vender o que não tem!
+          </span>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Caixa de Candidatura Rápida Interativa -->
-        <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-4 space-y-3" id="box-candidatura">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-emerald-900 uppercase tracking-wide">Candidatura com 1 Clique</span>
-            <span class="text-[11px] text-emerald-700"><i class="fa-solid fa-shield-halved"></i> Perfil Cadastrado</span>
-          </div>
-          <p class="text-xs text-slate-600">Seu perfil <strong>João da Silva (Goiânia - St. Bueno)</strong> já está pronto. Basta confirmar os critérios da vaga:</p>
-          
-          <div class="space-y-2 text-xs">
-            <label class="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" checked class="rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
-              <span>Tenho disponibilidade para início imediato</span>
-            </label>
-            <label class="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" checked class="rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
-              <span>Tenho fácil acesso ao Setor Bueno</span>
-            </label>
-          </div>
+  <!-- Interactive BI Dashboard Preview -->
+  <section class="section-container" id="preview">
+    <div class="section-header">
+      <span class="section-tag">Visão Gerencial</span>
+      <h2>Dashboard Executivo de BI (Ao Vivo)</h2>
+      <p>Veja como os diretores e gestores acompanham a operação em tempo real com gráficos e indicadores de alta
+        precisão:</p>
+    </div>
 
-          <button onclick="simularCandidatura()" id="btn-candidatar" class="w-full mt-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-lg shadow-sm transition-all flex items-center justify-center gap-2 text-sm">
-            <i class="fa-solid fa-paper-plane"></i>
-            QUERO ME CANDIDATAR AGORA
+    <div class="dashboard-preview-section">
+      <div class="preview-topbar">
+        <div>
+          <span class="preview-pill">Demonstração Interativa</span>
+          <h3 style="font-size: 1.4rem; font-weight: 800; margin-top: 0.4rem; color: var(--secondary);">Painel
+            Consolidado Multicanal</h3>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button
+            style="padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--border); background: white; font-weight: 700; color: var(--text-muted); cursor: pointer;">
+            Novembro 2026
+          </button>
+          <button
+            style="padding: 0.5rem 1rem; border-radius: 8px; border: none; background: var(--primary); font-weight: 700; color: white; cursor: pointer;">
+            Filtrar Canais
           </button>
         </div>
+      </div>
 
-        <div id="msg-sucesso" class="hidden bg-emerald-100 border border-emerald-300 text-emerald-900 rounded-xl p-4 text-xs font-semibold flex items-center gap-3">
-          <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
-          <div>
-            <p class="font-bold">Candidatura Enviada com Sucesso!</p>
-            <p class="font-normal text-emerald-800">A empresa recebeu seu perfil e poderá chamá-lo diretamente no WhatsApp.</p>
+      <!-- KPIs -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-title">Faturamento Bruto</div>
+          <div class="kpi-value">R$ 145.230</div>
+          <div style="font-size: 0.8rem; color: var(--success); font-weight: 700; margin-top: 0.3rem;">↑ +14.2% vs mês
+            anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Lucro Líquido Real</div>
+          <div class="kpi-value" style="color: var(--success);">R$ 62.450</div>
+          <div style="font-size: 0.8rem; color: var(--success); font-weight: 700; margin-top: 0.3rem;">Margem Líquida
+            Real: 43.0%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Custos Retidos (Taxas + Frete)</div>
+          <div class="kpi-value" style="color: var(--danger);">R$ 49.380</div>
+          <div style="font-size: 0.8rem; color: var(--danger); font-weight: 700; margin-top: 0.3rem;">Descontados na
+            fonte</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Volume de Pedidos</div>
+          <div class="kpi-value">2.845</div>
+          <div style="font-size: 0.8rem; color: var(--primary); font-weight: 700; margin-top: 0.3rem;">Média: 94
+            pedidos/dia</div>
+        </div>
+      </div>
+
+      <!-- Chart Row 1 -->
+      <div class="charts-row-1">
+        <div class="chart-box">
+          <div class="chart-box-title">
+            <span>Evolução Diária: Faturamento Bruto vs Lucro Líquido</span>
+            <span style="font-size: 0.8rem; font-weight: 500; color: var(--text-muted);">Diário</span>
+          </div>
+          <div class="chart-box-canvas">
+            <canvas id="lineChart"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-box">
+          <div class="chart-box-title">
+            <span>Faturamento por Canal de Venda</span>
+          </div>
+          <div class="chart-box-canvas">
+            <canvas id="doughnutChart"></canvas>
           </div>
         </div>
       </div>
 
-      <!-- Simulação WhatsApp Bot -->
-      <div class="lg:col-span-5 bg-slate-900 rounded-2xl p-4 shadow-xl border border-slate-800">
-        <div class="bg-[#075E54] text-white p-3 rounded-t-xl flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm">
-              <i class="fa-solid fa-robot"></i>
-            </div>
-            <div>
-              <p class="text-xs font-bold leading-none">Vaga Fácil GO • Atendimento</p>
-              <p class="text-[10px] text-emerald-200">Online 24h</p>
-            </div>
+      <!-- Chart Row 2 -->
+      <div class="charts-row-2">
+        <div class="chart-box">
+          <div class="chart-box-title">
+            <span>Top 5 SKUs mais Lucrativos</span>
           </div>
-          <i class="fa-brands fa-whatsapp text-lg text-emerald-300"></i>
-        </div>
-
-        <div class="bg-[#E5DDD5] p-3 rounded-b-xl space-y-2.5 text-xs text-slate-800 min-h-[340px] flex flex-col justify-end">
-          
-          <div class="chat-bubble-received p-2.5 shadow-sm max-w-[85%]">
-            <p>Olá! Bem-vindo ao <strong>Vaga Fácil GO</strong>. 🚀</p>
-            <p class="mt-1 text-[11px] text-slate-600">Encontramos <strong>3 vagas</strong> compatíveis com o seu perfil em Aparecida de Goiânia:</p>
-            <p class="mt-1 font-semibold text-emerald-900">1. Auxiliar de Almoxarifado<br>2. Operador de Caixa<br>3. Repositor de Mercadorias</p>
-            <p class="mt-1 text-[10px] text-slate-400">14:30</p>
-          </div>
-
-          <div class="chat-bubble-sent p-2.5 shadow-sm max-w-[75%] self-end">
-            <p>Quero me candidatar na vaga 1!</p>
-            <p class="mt-1 text-[10px] text-slate-400 text-right">14:31</p>
-          </div>
-
-          <div class="chat-bubble-received p-2.5 shadow-sm max-w-[85%]">
-            <p>Perfeito! 👏 Seus dados já cadastrados foram enviados para a empresa.</p>
-            <p class="mt-1 font-semibold text-emerald-800">Status: Candidatura confirmada ✅</p>
-            <p class="mt-1 text-[10px] text-slate-400">14:31</p>
-          </div>
-
-        </div>
-        <p class="text-[11px] text-slate-400 text-center mt-3">Exemplo de interação conversacional via WhatsApp Cloud API.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- METAS DO PROJETO-PILOTO (6 MESES) -->
-  <section class="py-16 bg-slate-900 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest">Viabilidade e Métricas de Avaliação</span>
-        <h2 class="text-3xl font-extrabold mt-2">Metas do Projeto-Piloto (6 Meses)</h2>
-        <p class="text-slate-400 mt-2 text-sm">
-          Foco inicial nos três municípios com maior atividade econômica e demanda por postos de trabalho em Goiás.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        
-        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 text-center space-y-2">
-          <p class="text-4xl font-black text-emerald-400">500+</p>
-          <p class="text-xs font-bold uppercase tracking-wider text-slate-300">Trabalhadores</p>
-          <p class="text-xs text-slate-400">Perfis ativos cadastrados e aptos a candidatura rápida.</p>
-        </div>
-
-        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 text-center space-y-2">
-          <p class="text-4xl font-black text-sky-400">30+</p>
-          <p class="text-xs font-bold uppercase tracking-wider text-slate-300">Empresas & PMEs</p>
-          <p class="text-xs text-slate-400">Comércios e pequenas indústrias cadastradas no piloto.</p>
-        </div>
-
-        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 text-center space-y-2">
-          <p class="text-4xl font-black text-amber-400">150+</p>
-          <p class="text-xs font-bold uppercase tracking-wider text-slate-300">Oportunidades</p>
-          <p class="text-xs text-slate-400">Vagas reais publicadas e intermediadas na região.</p>
-        </div>
-
-        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 text-center space-y-2">
-          <p class="text-4xl font-black text-teal-400">1.000+</p>
-          <p class="text-xs font-bold uppercase tracking-wider text-slate-300">Candidaturas</p>
-          <p class="text-xs text-slate-400">Conexões efetivadas entre trabalhadores e empresas.</p>
-        </div>
-
-      </div>
-
-      <div class="mt-12 bg-slate-800 border border-slate-700 rounded-2xl p-6 text-sm text-slate-300 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
-            <i class="fa-solid fa-map-pin text-lg"></i>
-          </div>
-          <div>
-            <span class="font-bold text-white">Municípios Atendidos no Piloto:</span>
-            <p class="text-xs text-slate-400">Goiânia (Capital) • Aparecida de Goiânia (Polo Industrial) • Senador Canedo (Polo Logístico/Petroquímico)</p>
+          <div class="chart-box-canvas">
+            <canvas id="barChartSkus"></canvas>
           </div>
         </div>
-        <span class="text-xs bg-emerald-900/60 border border-emerald-500/40 text-emerald-300 font-semibold px-3 py-1.5 rounded-full">
-          Expansão para Anápolis e Rio Verde na Fase 2
-        </span>
+
+        <div class="chart-box">
+          <div class="chart-box-title">
+            <span>Destino do Faturamento</span>
+          </div>
+          <div class="chart-box-canvas">
+            <canvas id="pieChartCustos"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-box">
+          <div class="chart-box-title">
+            <span>Ritmo Semanal de Pedidos</span>
+          </div>
+          <div class="chart-box-canvas">
+            <canvas id="barChartDias"></canvas>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ARQUITETURA TECNOLÓGICA & SEGURANÇA -->
-  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest">Engenharia de Software GSTek</span>
-      <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Arquitetura Técnica & Segurança</h2>
-      <p class="text-slate-600 mt-2 text-sm">Estruturada para máxima estabilidade, baixo custo de servidor e total respeito à LGPD.</p>
+  <!-- Comparison Table: Antes vs Depois -->
+  <section class="section-container" id="comparativo">
+    <div class="section-header">
+      <span class="section-tag">Impacto Prático</span>
+      <h2>A Transformação no Dia a Dia da Fábrica</h2>
+      <p>Veja a diferença brutal entre operar com planilhas soltas versus gerenciar com o Dom Lux ERP:</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-      
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-        <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-          <i class="fa-brands fa-python text-lg"></i>
+    <div class="comparison-grid">
+      <div class="comparison-card before">
+        <div class="comparison-title">
+          <span>❌</span> Sem o Dom Lux (Operação Caótica)
         </div>
-        <h4 class="font-bold text-slate-900">Python 3.12 + Django 5.x</h4>
-        <p class="text-xs text-slate-600 leading-relaxed">
-          Framework robusto, com ORM avançado, proteção nativa contra CSRF/SQL Injection e Django REST Framework para alimentar os canais web e mensageria.
-        </p>
+        <ul class="comparison-list">
+          <li>
+            <span class="comparison-bullet">✕</span>
+            <div><strong>Furo constante de estoque:</strong> O mesmo copo vende em 10 anúncios de kits diferentes e
+              ninguém sabe se ainda tem matéria-prima no galpão.</div>
+          </li>
+          <li>
+            <span class="comparison-bullet">✕</span>
+            <div><strong>Ilusão do faturamento bruto:</strong> Vende R$ 100.000, mas no fim do mês não sobra dinheiro
+              devido a comissões e fretes ocultos.</div>
+          </li>
+          <li>
+            <span class="comparison-bullet">✕</span>
+            <div><strong>Planilhas manuais quebradas:</strong> Perda de horas baixando relatórios do ML e Shopee para
+              tentar entender vendas e comissões.</div>
+          </li>
+          <li>
+            <span class="comparison-bullet">✕</span>
+            <div><strong>Ruptura no Mercado Envios Full:</strong> O produto esgota no Full e o anúncio perde toda a
+              relevância conquistada no marketplace.</div>
+          </li>
+          <li>
+            <span class="comparison-bullet">✕</span>
+            <div><strong>Fim de semana cego:</strong> Ninguém sabe o que foi vendido no sábado e domingo até
+              segunda-feira à tarde.</div>
+          </li>
+        </ul>
       </div>
 
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-        <div class="w-10 h-10 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center font-bold">
-          <i class="fa-solid fa-database text-lg"></i>
+      <div class="comparison-card after">
+        <div class="comparison-title">
+          <span>✅</span> Com o Dom Lux ERP (Operação Blindada)
         </div>
-        <h4 class="font-bold text-slate-900">PostgreSQL + Índices Textuais</h4>
-        <p class="text-xs text-slate-600 leading-relaxed">
-          Banco de dados relacional padrão da indústria, otimizado para consultas rápidas por cidade, bairro e função profissional com índices de alta velocidade.
-        </p>
+        <ul class="comparison-list">
+          <li>
+            <span class="comparison-bullet">✓</span>
+            <div><strong>Estoque Unitário Blindado:</strong> Qualquer kit de 10x, 20x ou 50x baixa as peças exatas no
+              galpão com cálculo em milissegundos.</div>
+          </li>
+          <li>
+            <span class="comparison-bullet">✓</span>
+            <div><strong>Lucro Real no Bolso:</strong> Você sabe na hora o lucro líquido de cada pedido descontando taxa
+              real do canal, frete e embalagem.</div>
+          </li>
+          <li>
+            <span class="comparison-bullet">✓</span>
+            <div><strong>Importador de Planilhas com IA:</strong> Reconhece kits automaticamente a partir de planilhas
+              padrões e monta o De/Para sozinho.</div>
+          </li>
+          <li>
+            <span class="comparison-bullet">✓</span>
+            <div><strong>Gestão de Full Inteligente:</strong> Alertas preditivos mostram quando e quanto enviar para o
+              Full antes do estoque zerar.</div>
+          </li>
+          <li>
+            <span class="comparison-bullet">✓</span>
+            <div><strong>Sincronização 24/7 Autônoma:</strong> Pedidos caem sozinhos a cada 10 minutos com renovação
+              automática de credenciais.</div>
+          </li>
+        </ul>
       </div>
-
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-        <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-          <i class="fa-solid fa-lock text-lg"></i>
-        </div>
-        <h4 class="font-bold text-slate-900">Conformidade Estrita com LGPD</h4>
-        <p class="text-xs text-slate-600 leading-relaxed">
-          Consentimento transparente. Os contatos do candidato só são liberados para a empresa após a manifestação do interesse com finalidade específica.
-        </p>
-      </div>
-
     </div>
   </section>
 
-  <!-- RODAPÉ EXECUTIVO -->
-  <footer class="bg-white border-t border-slate-200 py-10 no-print">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-      <div class="flex items-center gap-2">
-        <div class="w-6 h-6 rounded bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">VF</div>
-        <span class="font-bold text-slate-800">Vaga Fácil GO</span> • GSTek Desenvolvimento de Software
-      </div>
-      <div>
-        Documento técnico e proposta executiva para editais de bolsa e inovação (FAPEG / SEDI / Goiás).
-      </div>
-      <div>
-        © 2026 Vaga Fácil GO. Todos os direitos reservados.
-      </div>
+  <!-- Call to Action Footer -->
+  <footer class="cta-footer">
+    <h2>Pronto para Blindar o Lucro da sua Fábrica?</h2>
+    <p>Tenha total clareza financeira, controle absoluto do estoque de kits e pare de perder dinheiro com taxas e fretes
+      ocultos nos marketplaces.</p>
+
+    <div class="cta-btn-wrapper">
+      <a href="https://domlux.teste.gstek.com.br" target="_blank" class="btn-primary-large"
+        style="text-decoration: none;">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+        </svg>
+        Acessar Sistema Oficial Dom Lux
+      </a>
+      <a href="#solucoes" class="btn-secondary-large"
+        style="background: transparent; color: white; border-color: #334155;">
+        Rever Funcionalidades
+      </a>
+    </div>
+
+    <div
+      style="margin-top: 3.5rem; font-size: 0.85rem; color: #64748B; border-top: 1px solid #1E293B; padding-top: 2rem;">
+      Dom Lux Brindes & Acrílicos • Tecnologia desenvolvida por GSTek Soluções Digitais • 2026
     </div>
   </footer>
 
-  <!-- BOTÃO FLUTUANTE SALVAR EM PDF (NO-PRINT) -->
-  <div class="fixed bottom-6 right-6 z-50 no-print">
-    <button onclick="salvarComoPDF()" id="btn-pdf-float" class="flex items-center gap-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm px-4 py-3 rounded-full shadow-2xl hover:scale-105 transition-all border border-rose-500/30">
-      <i class="fa-solid fa-file-pdf text-base"></i>
-      <span class="hidden xs:inline">Salvar em PDF</span>
-    </button>
-  </div>
-
+  <!-- Chart.js Interactive Configuration -->
   <script>
-    function simularCandidatura() {
-      const btn = document.getElementById('btn-candidatar');
-      const box = document.getElementById('box-candidatura');
-      const msg = document.getElementById('msg-sucesso');
-      
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando candidatura...';
-      btn.disabled = true;
+    Chart.defaults.font.family = "'Outfit', sans-serif";
+    Chart.defaults.color = '#64748B';
 
-      setTimeout(() => {
-        box.classList.add('hidden');
-        msg.classList.remove('hidden');
-      }, 700);
-    }
-
-    function salvarComoPDF() {
-      const botoes = document.querySelectorAll('#btn-pdf-nav, #btn-pdf-float, button[onclick="salvarComoPDF()"]');
-      const textosOriginais = [];
-
-      botoes.forEach((b, i) => {
-        textosOriginais[i] = b.innerHTML;
-        b.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-sm"></i> <span>Gerando PDF...</span>';
-        b.disabled = true;
-      });
-
-      // Configuração refinada do html2pdf
-      const opt = {
-        margin: [8, 8, 8, 8],
-        filename: 'Vaga_Facil_GO_Proposta_Projeto.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { 
-          scale: 2, 
-          useCORS: true, 
-          logging: false,
-          scrollY: 0
+    // 1. Gráfico de Linha (Faturamento x Lucro Real)
+    const ctxLine = document.getElementById('lineChart').getContext('2d');
+    new Chart(ctxLine, {
+      type: 'line',
+      data: {
+        labels: ['Dia 01', 'Dia 05', 'Dia 10', 'Dia 15', 'Dia 20', 'Dia 25', 'Hoje'],
+        datasets: [
+          {
+            label: 'Faturamento Bruto (R$)',
+            data: [4200, 4800, 5600, 5200, 6800, 6400, 7200],
+            borderColor: '#4F46E5',
+            backgroundColor: 'rgba(79, 70, 229, 0.08)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#4F46E5',
+            pointRadius: 4
+          },
+          {
+            label: 'Lucro Líquido Real (R$)',
+            data: [1800, 2050, 2450, 2250, 2950, 2800, 3150],
+            borderColor: '#10B981',
+            backgroundColor: 'rgba(16, 185, 129, 0.08)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#10B981',
+            pointRadius: 4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { boxWidth: 12, font: { weight: '600' } } }
         },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-      };
-
-      // Executa o html2pdf capturando o corpo da página
-      if (typeof html2pdf !== 'undefined') {
-        html2pdf().set(opt).from(document.body).save().then(() => {
-          botoes.forEach((b, i) => {
-            b.innerHTML = textosOriginais[i];
-            b.disabled = false;
-          });
-        }).catch(err => {
-          console.warn('Fallback para janela de impressão nativa:', err);
-          window.print();
-          botoes.forEach((b, i) => {
-            b.innerHTML = textosOriginais[i];
-            b.disabled = false;
-          });
-        });
-      } else {
-        // Fallback caso a CDN não carregue
-        window.print();
-        botoes.forEach((b, i) => {
-          b.innerHTML = textosOriginais[i];
-          b.disabled = false;
-        });
+        scales: {
+          y: { beginAtZero: true, grid: { color: '#E2E8F0' } },
+          x: { grid: { display: false } }
+        }
       }
-    }
+    });
+
+    // 2. Gráfico de Rosca (Canais de Venda)
+    const ctxDoughnut = document.getElementById('doughnutChart').getContext('2d');
+    new Chart(ctxDoughnut, {
+      type: 'doughnut',
+      data: {
+        labels: ['Mercado Livre (52%)', 'Shopee (28%)', 'NuvemShop (12%)', 'WhatsApp B2B (8%)'],
+        datasets: [{
+          data: [52, 28, 12, 8],
+          backgroundColor: ['#F59E0B', '#EA580C', '#2563EB', '#16A34A'],
+          borderWidth: 0,
+          hoverOffset: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '72%',
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11, weight: '600' } } }
+        }
+      }
+    });
+
+    // 3. Gráfico de Barras Horizontais (Top SKUs mais Lucrativos)
+    const ctxBarSkus = document.getElementById('barChartSkus').getContext('2d');
+    new Chart(ctxBarSkus, {
+      type: 'bar',
+      data: {
+        labels: ['Taça Gin 580ml', 'Caneca Chopp 300ml', 'Copo Caldereta 350ml', 'Taça Espumante', 'Boné Personalizado'],
+        datasets: [{
+          label: 'Lucro Total Gerado (R$)',
+          data: [18400, 14200, 11800, 9500, 8550],
+          backgroundColor: '#4F46E5',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { display: false },
+          y: { grid: { display: false }, ticks: { font: { weight: '600', size: 11 } } }
+        }
+      }
+    });
+
+    // 4. Gráfico de Pizza (Destino do Faturamento)
+    const ctxPie = document.getElementById('pieChartCustos').getContext('2d');
+    new Chart(ctxPie, {
+      type: 'pie',
+      data: {
+        labels: ['LUCRO LÍQUIDO', 'CMV Matéria-Prima', 'Comissão dos Canais', 'Fretes Debitado Seller', 'Impostos'],
+        datasets: [{
+          data: [43, 23, 17, 11, 6],
+          backgroundColor: ['#10B981', '#64748B', '#EF4444', '#F59E0B', '#8B5CF6'],
+          borderWidth: 2,
+          borderColor: '#ffffff'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'right', labels: { boxWidth: 10, font: { size: 10.5, weight: '600' } } }
+        }
+      }
+    });
+
+    // 5. Gráfico de Barras Verticais (Ritmo Semanal)
+    const ctxBarDias = document.getElementById('barChartDias').getContext('2d');
+    new Chart(ctxBarDias, {
+      type: 'bar',
+      data: {
+        labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+        datasets: [{
+          label: 'Pedidos',
+          data: [410, 480, 520, 490, 560, 240, 145],
+          backgroundColor: '#818CF8',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, display: false },
+          x: { grid: { display: false }, ticks: { font: { weight: '700' } } }
+        }
+      }
+    });
   </script>
 </body>
-</html>
 
+</html>
